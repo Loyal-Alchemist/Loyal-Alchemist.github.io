@@ -9,7 +9,23 @@ body {
 </head>
 <body>
 <h1>Hello World</h1>
-<p>I'm better.</p>
-<button type="button">Click Me!</button>
+<p>You have: <span class="btn" id="btn">10</span> Stuff</p>
+<div>Generator 1: <span class="gen1" id="gen1">0</span><button type="button" onclick="buyGen1()">10</button></span>
+<script>
+var counter = 10;
+var gain = 0;
+function incrementer(){
+  counter+=gain;
+  document.getElementById("btn").innerHTML = counter.toString();
+}
+function buyGen1(){
+  if(counter >= 10){
+  counter -= 10;
+  gain += 1;
+  document.getElementById("gen1").innerHTML = gain.toString();}
+  
+}
+setInterval(incrementer, 100);
+</script>
 </body>
 </html>
