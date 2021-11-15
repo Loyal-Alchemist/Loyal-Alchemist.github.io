@@ -10,22 +10,32 @@ body {
 <body>
 <h1>Hello World</h1>
 <p>You have: <span class="btn" id="btn">10</span> Stuff</p>
-<div>Generator 1: <span class="gen1" id="gen1">0</span><button type="button" onclick="buyGen1()">10</button></span>
+<div>Generator 1: <span class="gen1" id="gen1">0</span><button type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></span>
 <script>
 var counter = 10;
 var gain = 0;
+var gen1 = 0;
+var gen1Cost = 10;
 function incrementer(){
   counter+=gain;
   document.getElementById("btn").innerHTML = counter.toString();
 }
-function buyGen1(){
-  if(counter >= 10){
-  counter -= 10;
-  gain += 1;
-  document.getElementById("gen1").innerHTML = gain.toString();}
-  
-}
 setInterval(incrementer, 100);
+function buyGen1(){
+  if(counter>=gen1Cost){
+  counter-=gen1Cost;
+  gen1+=1;
+  document.getElementById("gen1").innerHTML = gen1.toString();
+  calculateGain();
+  calculateCost();}
+}
+function calculateGain(){
+  gain=Math.pow(2,gen1);
+}
+function calculateCost(){
+  gen1Cost=2*gen1;
+  document.getElementById("gen1Cost").innerHTML = gen1Cost.toString(); 
+}
 </script>
 </body>
 </html>
