@@ -47,7 +47,8 @@ td{
 <div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Treasure per second</p></div>
 <div class="tab" style="text-align:center;">
   <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Collect')">Collect</button>
-  <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Improve')" id="unlock1">Improve</button>
+  <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Attributes')" id="unlock1">Attributes</button>
+  <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Artifacts')" id="unlock2">Artifacts</button>
 </div>
 
 <div class="tabcontent" id="Collect">
@@ -65,20 +66,32 @@ td{
 </table>
 </div>
 
-<div class="tabcontent" id="Improve">
+<div class="tabcontent" id="Attributes">
 <span class="background">&#9956;</span>
 <button style="position: absolute; width:100px; top: 29%; left:46.68%;" onclick="prowessChoice()">Prowess</button>
 <span style="position: absolute; width:100px; top: 31.8%; left:43.68%; color:red; white-space: nowrap;">Multiply Treasure gain by <span class="prowess" id="prowess">1</span>x<br>Multiply Vitality gain by <span class="prowess2" id="prowess2">1</span>x</span>
 <button style="position: absolute; width:100px; top: 55%; left:30%;" onclick="willChoice()">Will</button>
-<span style="position: absolute; width:100px; top: 57.8%; left:27%; color:red; white-space: nowrap;">Gain <span class="will" id="will">0</span> Planets per second<br>Multiply Prowess gain by <span class="will2" id="will2">1</span>x</span>
+<span style="position: absolute; width:100px; top: 57.8%; left:27%; color:red; white-space: nowrap;">Gain <span class="will" id="will">0</span> Countries per second<br>Multiply Prowess gain by <span class="will2" id="will2">1</span>x</span>
 <button style="position: absolute; width:100px; top: 55%; left:63.8%;" onclick="vitalityChoice()">Vitality</button>
 <span style="position: absolute; width:100px; top: 57.8%; left:60.8%; color:red; white-space: nowrap;">Increase per upgrade Mult by <span class="vitality" id="vitality">0</span><br>Multiply Dexterity gain by <span class="vitality2" id="vitality2">1</span>x</span>
 <button style="position: absolute; width:100px; top: 95%; left:57.5%;" onclick="dexterityChoice()">Dexterity</button>
-<span style="position: absolute; width:100px; top: 89.2%; left:54.5%; color:red; white-space: nowrap;">Gain <span class="dexterity" id="dexterity">0</span> free Hamlet purchase<br>Multiply Charisma gain by <span class="dexterity2" id="dexterity2">1</span>x</span>
+<span style="position: absolute; width:100px; top: 89.2%; left:54.5%; color:red; white-space: nowrap;">Gain <span class="dexterity" id="dexterity">0</span> free Peasent purchase<br>Multiply Charisma gain by <span class="dexterity2" id="dexterity2">1</span>x</span>
 <button style="position: absolute; width:100px; top: 95%; left:36.3%;" onclick="charismaChoice()">Charisma</button>
 <span style="position: absolute; width:100px; top: 89.2%; left:33.3%; color:red; white-space: nowrap;">Divide upgrade costs by <span class="charisma" id="charisma">1</span>x<br>Multiply Will gain by <span class="charisma2" id="charisma2">1</span>x</span>
-
+<button style="position: absolute; width:100px; top: 61%; left:46.75%;" onclick="greedChoice()">Greed</button>
+<span style="position: absolute; width:100px; top: 63.8%; left:43.75%; color:red; white-space: nowrap;">Multiply All Attribute gains by <span class="greed" id="greed">1</span>x<br></span>
 </div>
+
+<div class="tabcontent" id="Artifacts">
+<table class="generatorTable">
+<tr><td><button style="width:100px;" type="button" class="artifactReset" id="artifactReset" onclick="artifactResetMid()">2</button></td></tr>
+<tr><td>Golden Chalice</td><td>Holy Sword</td><td>Earthen Shield</td><td>Winged Boots</td><td>Fairy Amulet</td><td>Cursed Grimore</td><td>Draconic Scales<td></tr>
+<tr><td>Midas's Favorite</td><td>Poor Hero</td><td>Spirit Blessed!</td><td>Too Small For You</td><td>Feels Magical</td><td>It's Wispering?</td><td>They Stir Your Greed<td></tr>
+<tr><td><span id="goldChalice"></span></td><td><span id="holySword"></span></td><td><span id="earthShield"></span></td><td><span id="wingBoots"></span></td><td><span id="fairyAmulet"></span></td><td><span id="curseGrimore"></span></td><td><span id="dragonScale"></span></td></tr>
+<tr><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyGoldChalice()">1</button></td><td><button style="width:100px;" type="button" class="buyHolySword" id="buyHolySword" onclick="buyHolySword()">1</button></td><td><button style="width:100px;" type="button" class="buyEarthenShield" id="buyEarthenShield" onclick="buyEarthenShield()">1</button></td><td><button style="width:100px;" type="button" class="buyWingBoots" id="buyWingBoots" onclick="buyWingBoots()">1</button></td><td><button style="width:100px;" type="button" class="buyFairyAmulet" id="buyFairyAmulet" onclick="buyFairyAmulet()">1</button></td><td><button style="width:100px;" type="button" class="buyCursedGrimore" id="buyCursedGrimore" onclick="buyCursedGrimore()">1</button></td><td><button style="width:100px;" type="button" class="buyDragonScales" id="buyDragonScales" onclick="buyDragonScales()">2</button></td></tr>
+</table>
+</div>
+
 <script>
 function openTab(evt, tabName) {
   // Declare all variables
@@ -101,7 +114,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-var counter = 10;
+var counter = 1e101;
 var gain = 0;
 
 var gen1 = 0;
@@ -179,8 +192,51 @@ var willAmt = 0;
 var willEff1 = 0;
 var willEff2 = 1;
 
+var greedAmt = 0;
+var greedEff1 = 1;
+
 var attChoice = 0;
+
+var goldChaliceAmt = 0;
+var goldChaliceCost = 1;
+var goldChaliceEff1 = 1;
+
+var holySwordAmt = 0;
+var holySwordCost = 1;
+var holySwordEff1 = 1;
+var holySwordEff2 = 0;
+
+var earthShieldAmt = 0;
+var earthShieldCost = 1;
+var earthShieldEff1 = 1;
+var earthShieldEff2 = 0;
+
+var wingBootsAmt = 0;
+var wingBootsCost = 1;
+var wingBootsEff1 = 1;
+var wingBootsEff2 = 0;
+
+var fairyAmuletAmt = 0;
+var fairyAmuletCost = 1;
+var fairyAmuletEff1 = 1;
+var fairyAmuletEff2 = 0;
+
+var curseGrimoreAmt = 0;
+var curseGrimoreCost = 1;
+var curseGrimoreEff1 = 1;
+var curseGrimoreEff2 = 0;
+
+var dragonScaleAmt = 0;
+var dragonScaleCost = 2;
+var dragonScaleEff1 = 1;
+var dragonScaleEff2 = 0;
+
+var artifactShard = 0;
+var artifactReset = 2;
+
+
 function incrementer(){
+  calculateArtifact();
   calculateCost();
   calculateGain();
   calculateAtt();
@@ -193,10 +249,170 @@ function incrementer(){
   document.getElementById("btn2").innerHTML = Math.trunc(gain*10).toString();}
   if((counter >= 1e30) && (document.getElementById("unlock1").style.visibility = "hidden")){
   document.getElementById("unlock1").style.visibility = "visible";}
+  if((counter >= 1e100) && (document.getElementById("unlock2").style.visibility = "hidden")){
+  document.getElementById("unlock2").style.visibility = "visible";}
 }
 setInterval(incrementer, 100);
 openTab(event, 'Collect');
 
+function buyGoldChalice(){
+  if(artifactShard>=goldChaliceCost){
+  artifactShard-=goldChaliceCost;
+  goldChaliceAmt+=1;
+  calculateArtifact();}
+}
+function buyHolySword(){
+  if(artifactShard>=holySwordCost){
+  artifactShard-=holySwordCost;
+  holySwordAmt+=1;
+  calculateArtifact();}
+}
+function buyEarthenShield(){
+  if(artifactShard>=earthShieldCost){
+  artifactShard-=earthShieldCost;
+  earthShieldAmt+=1;
+  calculateArtifact();}
+}
+function buyWingBoots(){
+  if(artifactShard>=wingBootsCost){
+  artifactShard-=wingBootsCost;
+  wingBootsAmt+=1;
+  calculateArtifact();}
+}
+function buyFairyAmulet(){
+  if(artifactShard>=fairyAmuletCost){
+  artifactShard-=fairyAmuletCost;
+  fairyAmuletAmt+=1;
+  calculateArtifact();}
+}
+function buyCursedGrimore(){
+  if(artifactShard>=curseGrimoreCost){
+  artifactShard-=curseGrimoreCost;
+  curseGrimoreAmt+=1;
+  calculateArtifact();}
+}
+function buyDragonScales(){
+  if(artifactShard>=dragonScaleCost){
+  artifactShard-=dragonScaleCost;
+  dragonScaleAmt+=1;
+  calculateArtifact();}
+}
+function start1(){
+counter = 1e1;
+gain = 0;
+
+gen1 = 0;
+gen1Pd = 0;
+gen1Tot = 0;
+gen1Mult = 1;
+
+gen2 = 0;
+gen2Pd = 0;
+gen2Tot = 0;
+gen2Mult = 1;
+
+gen3 = 0;
+gen3Pd = 0;
+gen3Tot = 0;
+gen3Mult = 1;
+
+gen4 = 0;
+gen4Pd = 0;
+gen4Tot = 0;
+gen4Mult = 1;
+
+gen5 = 0;
+gen5Pd = 0;
+gen5Tot = 0;
+gen5Mult = 1;
+
+gen6 = 0;
+gen6Pd = 0;
+gen6Tot = 0;
+gen6Mult = 1;
+
+gen7 = 0;
+gen7Pd = 0;
+gen7Tot = 0;
+gen7Mult = 1;
+
+gen8 = 0;
+gen8Pd = 0;
+gen8Tot = 0;
+gen8Mult = 1;
+
+gen9 = 0;
+gen9Pd = 0;
+gen9Tot = 0;
+gen9Mult = 1;
+
+gen1Cost = 10;
+gen2Cost = 1000;
+gen3Cost = 100000;
+gen4Cost = 100000000;
+gen5Cost = 10000000000;
+gen6Cost = 1000000000000;
+gen7Cost = 100000000000000;
+gen8Cost = 10000000000000000;
+gen9Cost = 1000000000000000000;
+
+prowessAmt = 0;
+prowessEff1 = 1;
+prowessEff2 = 1;
+
+vitalityAmt = 0;
+vitalityEff1 = 0;
+vitalityEff2 = 1;
+
+dexterityAmt = 0;
+dexterityEff1 = 0;
+dexterityEff2 = 1;
+
+charismaAmt = 0;
+charismaEff1 = 1;
+charismaEff2 = 1;
+
+willAmt = 0;
+willEff1 = 0;
+willEff2 = 1;
+
+greedAmt = 0;
+greedEff1 = 1;
+
+attChoice = 0;}
+
+function calculateArtifact(){
+  artifactReset = (Math.log(counter)/Math.log(1e20))-3;
+  document.getElementById("artifactReset").innerHTML = artifactReset;
+  if(goldChaliceAmt<15){
+  goldChaliceCost=Math.pow(Math.pow(3,goldChaliceAmt),.5);}
+  goldChaliceEff1=Math.pow(100,goldChaliceAmt);
+  document.getElementById("goldChalice").innerHTML = "Multiply Treasure gain by: " + goldChaliceEff1.toString() + "x<br>Next: " + (goldChaliceEff1*100).toString() + "x";
+  holySwordCost=Math.pow(3,holySwordAmt);
+  holySwordEff1=Math.pow(3,holySwordAmt);
+  holySwordEff2=.2*holySwordAmt;
+  document.getElementById("holySword").innerHTML = "Multiply Prowess gain by: " + holySwordEff1.toString() + "x, and increase Prowess's First Effect by: " + holySwordEff2.toString() + "<br>Next: " + (holySwordEff1*3).toString() + "x, and +" + (holySwordEff2+.2).toString();
+  earthShieldCost=Math.pow(3,earthShieldAmt);
+  earthShieldEff1=Math.pow(3,earthShieldAmt);
+  earthShieldEff2=0.005*earthShieldAmt;
+  document.getElementById("earthShield").innerHTML = "Multiply Vitality gain by: " + earthShieldEff1.toString() + "x, and increase Vitality's First Effect by: " + (earthShieldEff2*10000).toString() + "%<br>Next: " + (earthShieldEff1*3).toString() + "x, and +" + (earthShieldEff2*10000+50).toString() + "%";
+  wingBootsCost=Math.pow(3,wingBootsAmt);
+  wingBootsEff1=Math.pow(3,wingBootsAmt);
+  wingBootsEff2=.1*wingBootsAmt;
+  document.getElementById("wingBoots").innerHTML = "Multiply Dexterity gain by: " + wingBootsEff1.toString() + "x, and increase Dexterity's First Effect by: " + wingBootsEff2.toString() + "<br>Next: " + (wingBootsEff1*3).toString() + "x, and +" + (wingBootsEff2+.1).toString();
+  fairyAmuletCost=Math.pow(3,fairyAmuletAmt);
+  fairyAmuletEff1=Math.pow(3,fairyAmuletAmt);
+  fairyAmuletEff2=0.15*fairyAmuletAmt;
+  document.getElementById("fairyAmulet").innerHTML = "Multiply Charisma gain by: " + fairyAmuletEff1.toString() + "x, and increase Charisma's First Effect by: " + fairyAmuletEff2.toString() + "<br>Next: " + (fairyAmuletEff1*3).toString() + "x, and +" + (fairyAmuletEff2+.15).toString();
+  curseGrimoreCost=Math.pow(3,curseGrimoreAmt);
+  curseGrimoreEff1=Math.pow(3,curseGrimoreAmt);
+  curseGrimoreEff2=.1*curseGrimoreAmt;
+  document.getElementById("curseGrimore").innerHTML = "Multiply Prowess gain by: " + curseGrimoreEff1.toString() + "x, and increase Prowess's First Effect by: " + curseGrimoreEff2.toString() + "<br>Next: " + (curseGrimoreEff1*3).toString() + "x, and +" + (curseGrimoreEff2+.1).toString();
+  dragonScaleCost=1+Math.pow(4,dragonScaleAmt);
+  dragonScaleEff1=Math.pow(3,dragonScaleAmt);
+  dragonScaleEff2=.2*dragonScaleAmt;
+  document.getElementById("dragonScale").innerHTML = "Multiply Greed gain by: " + dragonScaleEff1.toString() + "x, and increase Greed's Effect by: " + dragonScaleEff2.toString() + "<br>Next: " + (dragonScaleEff1*3).toString() + "x, and +" + (dragonScaleEff2+.2).toString();
+}
 function vitalityChoice(){
   attChoice=2;
 }
@@ -212,38 +428,46 @@ function willChoice(){
 function prowessChoice(){
   attChoice=1;
 }
+function greedChoice(){
+  attChoice=6;
+}
 function calculateAtt(){
+  if(attChoice==6){
+    greedAmt+=1*dragonScaleEff1;
+    greedEff1=1+Math.pow(greedAmt,(.5+dragonScaleEff2));
+    document.getElementById("greed").innerHTML = (Math.trunc(greedEff1*10)/10).toString();
+  }
   if(attChoice==1){
-    prowessAmt+=willEff2;
-    prowessEff1=1+Math.pow(prowessAmt,.5);
+    prowessAmt+=willEff2*greedEff1*holySwordEff1;
+    prowessEff1=1+Math.pow(prowessAmt,(.5+holySwordEff2));
     document.getElementById("prowess").innerHTML = (Math.trunc(prowessEff1*10)/10).toString();
     prowessEff2=1+Math.pow(prowessAmt,.2);
     document.getElementById("prowess2").innerHTML = (Math.trunc(prowessEff2*10)/10).toString();
   }
     if(attChoice==2){
-    vitalityAmt+=willEff2;
-    vitalityEff1=0.01*Math.log(vitalityAmt);
+    vitalityAmt+=prowessEff2*greedEff1*earthShieldEff1;
+    vitalityEff1=(0.01+earthShieldEff2)*Math.log(vitalityAmt);
     document.getElementById("vitality").innerHTML = (Math.trunc(vitalityEff1*100)/100).toString();
     vitalityEff2=1+Math.pow(vitalityAmt,.2);
     document.getElementById("vitality2").innerHTML = (Math.trunc(vitalityEff2*10)/10).toString();
   }
     if(attChoice==3){
-    dexterityAmt+=willEff2;
-    dexterityEff1=Math.pow(dexterityAmt,.2);
+    dexterityAmt+=vitalityEff2*greedEff1*wingBootsEff1;
+    dexterityEff1=Math.pow(dexterityAmt,(.2+wingBootsEff2));
     document.getElementById("dexterity").innerHTML = (Math.trunc(dexterityEff1*10)/10).toString();
     dexterityEff2=1+Math.pow(dexterityAmt,.2);
     document.getElementById("dexterity2").innerHTML = (Math.trunc(dexterityEff2*10)/10).toString();
   }
     if(attChoice==4){
-    charismaAmt+=willEff2;
-    charismaEff1=1+Math.pow(charismaAmt,.25);
+    charismaAmt+=dexterityEff2*greedEff1*fairyAmuletEff1;
+    charismaEff1=1+Math.pow(charismaAmt,(.25+fairyAmuletEff2));
     document.getElementById("charisma").innerHTML = (Math.trunc(charismaEff1*10)/10).toString();
     charismaEff2=1+Math.pow(charismaAmt,.2);
     document.getElementById("charisma2").innerHTML = (Math.trunc(charismaEff2*10)/10).toString();
   }
     if(attChoice==5){
-    willAmt+=willEff2;
-    willEff1=Math.pow(willAmt,.1);
+    willAmt+=charismaEff2*greedEff1*curseGrimoreEff1;
+    willEff1=Math.pow(willAmt,(.1+curseGrimoreEff2));
     document.getElementById("will").innerHTML = (Math.trunc(willEff1*10)/10).toString();
     willEff2=1+Math.pow(willAmt,.2);
     document.getElementById("will2").innerHTML = (Math.trunc(willEff2*10)/10).toString();
@@ -466,6 +690,13 @@ function calculateCost(){
   document.getElementById("gen7Cost").innerHTML = gen7Cost.toString(); 
   document.getElementById("gen8Cost").innerHTML = gen8Cost.toString();
   document.getElementById("gen9Cost").innerHTML = gen9Cost.toString(); 
+}
+function artifactResetMid(){
+  hmm();
+}
+function hmm(){
+  artifactShard+=artifactReset;
+  start1();
 }
 </script>
 </body>
