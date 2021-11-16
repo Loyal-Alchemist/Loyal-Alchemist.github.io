@@ -57,6 +57,7 @@ td{
   <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Collect')">Collect</button>
   <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Attributes')" id="unlock1">Attributes</button>
   <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Artifacts')" id="unlock2">Artifacts</button>
+  <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Settings')">Settings</button>
 </div>
 
 <div class="tabcontent" id="Collect">
@@ -99,6 +100,10 @@ td{
 <tr><td><span id="goldChalice"></span></td><td><span id="holySword"></span></td><td><span id="earthShield"></span></td><td><span id="wingBoots"></span></td><td><span id="fairyAmulet"></span></td><td><span id="curseGrimore"></span></td><td><span id="dragonScale"></span></td></tr>
 <tr><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyGoldChalice()">1</button></td><td><button style="width:100px;" type="button" class="buyHolySword" id="buyHolySword" onclick="buyHolySword()">1</button></td><td><button style="width:100px;" type="button" class="buyEarthenShield" id="buyEarthenShield" onclick="buyEarthenShield()">1</button></td><td><button style="width:100px;" type="button" class="buyWingBoots" id="buyWingBoots" onclick="buyWingBoots()">1</button></td><td><button style="width:100px;" type="button" class="buyFairyAmulet" id="buyFairyAmulet" onclick="buyFairyAmulet()">1</button></td><td><button style="width:100px;" type="button" class="buyCursedGrimore" id="buyCursedGrimore" onclick="buyCursedGrimore()">1</button></td><td><button style="width:100px;" type="button" class="buyDragonScales" id="buyDragonScales" onclick="buyDragonScales()">2</button></td></tr>
 </table>
+</div>
+
+<div class="tabcontent" id="Settings">
+
 </div>
 
 <script src="ExpantaNum.js"></script>
@@ -244,12 +249,152 @@ var dragonScaleEff2 = 0;
 var artifactShard = 0;
 var artifactReset = 2;
 
+function saving(){
+localStorage.setItem("scounter",counter);
+localStorage.setItem("sgain",gain);
+
+localStorage.setItem("sgen1",gen1);
+localStorage.setItem("sgen1Pd",gen1Pd);
+
+localStorage.setItem("sgen2",gen2);
+localStorage.setItem("sgen2Pd",gen2Pd);
+
+localStorage.setItem("sgen3",gen3);
+localStorage.setItem("sgen3Pd",gen3Pd);
+
+localStorage.setItem("sgen4",gen4);
+localStorage.setItem("sgen4Pd",gen4Pd);
+
+localStorage.setItem("sgen5",gen5);
+localStorage.setItem("sgen5Pd",gen5Pd);
+
+localStorage.setItem("sgen6",gen6);
+localStorage.setItem("sgen6Pd",gen6Pd);
+
+localStorage.setItem("sgen7",gen7);
+localStorage.setItem("sgen7Pd",gen7Pd);
+
+localStorage.setItem("sgen8",gen8);
+localStorage.setItem("sgen8Pd",gen8Pd);
+
+localStorage.setItem("sgen9",gen9);
+localStorage.setItem("sgen9Pd",gen9Pd);
+
+localStorage.setItem("sprowessAmt",prowessAmt);
+
+localStorage.setItem("svitalityAmt",vitalityAmt);
+
+localStorage.setItem("sdexterityAmt",dexterityAmt);
+
+localStorage.setItem("sdexterityAmt",charismaAmt);
+
+localStorage.setItem("swillAmt",willAmt);
+
+localStorage.setItem("sgreedAmt",greedAmt);
+
+localStorage.setItem("sgoldChaliceAmt",goldChaliceAmt);
+
+localStorage.setItem("searthShieldAmt",earthShieldAmt);
+
+localStorage.setItem("swingBootsAmt",wingBootsAmt);
+
+localStorage.setItem("sfairyAmuletAmt",fairyAmuletAmt);
+
+localStorage.setItem("scurseGrimoreAmt",curseGrimoreAmt);
+
+localStorage.setItem("sdragonScaleAmt",dragonScaleAmt);
+}
+var fix1=0, fix2=0, fix3=0, fix4=0, fix5=0, fix6=0, fix7=0, fix8=0, fix9=0;
+function loading(){
+counter=localStorage.getItem("scounter");
+gain=localStorage.getItem("sgain");
+
+fix1=localStorage.getItem("sgen1");
+while(fix1>0){
+gen1 += fix1%10;
+fix1 = Math.floor(fix1/10);}
+gen1Pd=localStorage.getItem("sgen1Pd");
+
+fix2=localStorage.getItem("sgen2");
+while(fix2>0){
+gen2 += fix2%10;
+fix2 = Math.floor(fix2/10);}
+gen2Pd=localStorage.getItem("sgen2Pd");
+
+fix3=localStorage.getItem("sgen3");
+while(fix3>0){
+gen3 += fix3%10;
+fix3 = Math.floor(fix3/10);}
+gen3Pd=localStorage.getItem("sgen3Pd");
+
+fix4=localStorage.getItem("sgen4");
+while(fix4>0){
+gen4 += fix4%10;
+fix4 = Math.floor(fix4/10);}
+gen4Pd=localStorage.getItem("sgen4Pd");
+
+fix5=localStorage.getItem("sgen5");
+while(fix5>0){
+gen5 += fix5%10;
+fix5 = Math.floor(fix5/10);}
+gen5Pd=localStorage.getItem("sgen5Pd");
+
+fix6=localStorage.getItem("sgen6");
+while(fix6>0){
+gen6 += fix6%10;
+fix6 = Math.floor(fix6/10);}
+gen6Pd=localStorage.getItem("sgen6Pd");
+
+fix7=localStorage.getItem("sgen7");
+while(fix7>0){
+gen7 += fix7%10;
+fix7 = Math.floor(fix7/10);}
+gen7Pd=localStorage.getItem("sgen7Pd");
+
+fix8=localStorage.getItem("sgen8");
+while(fix8>0){
+gen8 += fix8%10;
+fix8 = Math.floor(fix8/10);}
+gen8Pd=localStorage.getItem("sgen8Pd");
+
+fix9=localStorage.getItem("sgen9");
+while(fix9>0){
+gen9 += fix9%10;
+fix9 = Math.floor(fix9/10);}
+gen9Pd=localStorage.getItem("sgen9Pd");
+
+prowessAmt=localStorage.getItem("sprowessAmt");
+
+vitalityAmt=localStorage.getItem("svitalityAmt");
+
+dexterityAmt=localStorage.getItem("sdexterityAmt");
+
+charismaAmt=localStorage.getItem("scharismaAmt");
+
+willAmt=localStorage.getItem("swillAmt");
+
+greedAmt=localStorage.getItem("sgreedAmt");
+
+goldChaliceAmt=localStorage.getItem("sgoldChaliceAmt");
+
+earthShieldAmt=localStorage.getItem("searthShieldAmt");
+
+wingBootsAmt=localStorage.getItem("swingBootsAmt");
+
+fairyAmuletAmt=localStorage.getItem("sfairyAmuletAmt");
+
+curseGrimoreAmt=localStorage.getItem("scurseGrimoreAmt");
+
+dragonScaleAmt=localStorage.getItem("sdragonScaleAmt");
+}
+loading();
 
 function incrementer(){
   calculateArtifact();
   calculateCost();
   calculateGain();
   calculateAtt();
+  saving();
   counter = ExpantaNum.add(counter,gain);
   if(counter >= 1000000) {  document.getElementById("btn").innerHTML = counter.toExponential(2).toString();}
   else
@@ -264,6 +409,7 @@ function incrementer(){
 }
 setInterval(incrementer, 100);
 openTab(event, 'Collect');
+
 
 function buyGoldChalice(){
   if(artifactShard>=goldChaliceCost){
