@@ -10,12 +10,17 @@ body {
   margin-top: 5%;
   font-size: 140%;
 }
+.center2 {
+  text-align: center;
+  font-size: 100%;
+}
 .generatorTable {
   margin-top: 15%;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   text-align: center;
+  table-layout:fixed;
 }
 td{
   height: 35px;
@@ -24,47 +29,66 @@ td{
 </head>
 <body>
 <div class="center"><p>You have: <span class="btn" id="btn">10</span> Stuff</p></div>
+<div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Stuff per second</p></div>
 <table class="generatorTable">
-<tr><td>Generator 1:</td><td class="gen1" id="gen1">0 (0)</td><td><button type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></td></tr>
-<tr><td>Generator 2: <td class="gen2" id="gen2">0</td><td><button type="button" class="gen2Cost" id="gen2Cost" onclick="buyGen2()">1000</button></td></tr>
-<tr><td>Generator 3: <td class="gen3" id="gen3">0</td><td><button type="button" class="gen3Cost" id="gen3Cost" onclick="buyGen3()">100000</button></td></tr>
-<tr><td>Generator 4: <td class="gen4" id="gen4">0</td><td><button type="button" class="gen4Cost" id="gen4Cost" onclick="buyGen4()">10000000</button></td></tr>
-<tr><td>Generator 5: <td class="gen5" id="gen5">0</td><td><button type="button" class="gen5Cost" id="gen5Cost" onclick="buyGen5()">1000000000</button></td></tr>
-<tr><td>Generator 6: <td class="gen6" id="gen6">0</td><td><button type="button" class="gen6Cost" id="gen6Cost" onclick="buyGen6()">100000000000</button></td></tr>
-<tr><td>Generator 7: <td class="gen7" id="gen7">0</td><td><button type="button" class="gen7Cost" id="gen7Cost" onclick="buyGen7()">10000000000000</button></td></tr>
-<tr><td>Generator 8: <td class="gen8" id="gen8">0</td><td><button type="button" class="gen8Cost" id="gen8Cost" onclick="buyGen8()">1000000000000000</button></td></tr>
-<tr><td>Generator 9: <td class="gen9" id="gen9">0</td><td><button type="button" class="gen9Cost" id="gen9Cost" onclick="buyGen9()">100000000000000000</button></td></tr>
+<tr><td class="gen1Mult" id="gen1Mult">Generator 1: 1x</td><td class="gen1" id="gen1">0</td><td><button style="width:100px;" type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></td></tr>
+<tr><td class="gen2Mult" id="gen2Mult">Generator 2: 1x</td><td class="gen2" id="gen2">0</td><td><button style="width:100px;" type="button" class="gen2Cost" id="gen2Cost" onclick="buyGen2()">1000</button></td></tr>
+<tr><td class="gen3Mult" id="gen3Mult">Generator 3: 1x</td><td class="gen3" id="gen3">0</td><td><button style="width:100px;" type="button" class="gen3Cost" id="gen3Cost" onclick="buyGen3()">100000</button></td></tr>
+<tr><td class="gen4Mult" id="gen4Mult">Generator 4: 1x</td><td class="gen4" id="gen4">0</td><td><button style="width:100px;" type="button" class="gen4Cost" id="gen4Cost" onclick="buyGen4()">1.00e+7</button></td></tr>
+<tr><td class="gen5Mult" id="gen5Mult">Generator 5: 1x</td><td class="gen5" id="gen5">0</td><td><button style="width:100px;" type="button" class="gen5Cost" id="gen5Cost" onclick="buyGen5()">1.00e+9</button></td></tr>
+<tr><td class="gen6Mult" id="gen6Mult">Generator 6: 1x</td><td class="gen6" id="gen6">0</td><td><button style="width:100px;" type="button" class="gen6Cost" id="gen6Cost" onclick="buyGen6()">1.00e+11</button></td></tr>
+<tr><td class="gen7Mult" id="gen7Mult">Generator 7: 1x</td><td class="gen7" id="gen7">0</td><td><button style="width:100px;" type="button" class="gen7Cost" id="gen7Cost" onclick="buyGen7()">1.00e+13</button></td></tr>
+<tr><td class="gen8Mult" id="gen8Mult">Generator 8: 1x</td><td class="gen8" id="gen8">0</td><td><button style="width:100px;" type="button" class="gen8Cost" id="gen8Cost" onclick="buyGen8()">1.00e+15</button></td></tr>
+<tr><td class="gen9Mult" id="gen9Mult">Generator 9: 1x</td><td class="gen9" id="gen9">0</td><td><button style="width:100px;" type="button" class="gen9Cost" id="gen9Cost" onclick="buyGen9()">1.00e+17</button></td></tr>
 </table>
 <script>
 var counter = 10;
 var gain = 0;
+
 var gen1 = 0;
 var gen1Pd = 0;
 var gen1Tot = 0;
+var gen1Mult = 1;
+
 var gen2 = 0;
 var gen2Pd = 0;
 var gen2Tot = 0;
+var gen2Mult = 1;
+
 var gen3 = 0;
 var gen3Pd = 0;
 var gen3Tot = 0;
+var gen3Mult = 1;
+
 var gen4 = 0;
 var gen4Pd = 0;
 var gen4Tot = 0;
+var gen4Mult = 1;
+
 var gen5 = 0;
 var gen5Pd = 0;
 var gen5Tot = 0;
+var gen5Mult = 1;
+
 var gen6 = 0;
 var gen6Pd = 0;
 var gen6Tot = 0;
+var gen6Mult = 1;
+
 var gen7 = 0;
 var gen7Pd = 0;
 var gen7Tot = 0;
+var gen7Mult = 1;
+
 var gen8 = 0;
 var gen8Pd = 0;
 var gen8Tot = 0;
+var gen8Mult = 1;
+
 var gen9 = 0;
 var gen9Pd = 0;
 var gen9Tot = 0;
+var gen9Mult = 1;
 
 var gen1Cost = 10;
 var gen2Cost = 1000;
@@ -75,10 +99,16 @@ var gen6Cost = 1000000000000;
 var gen7Cost = 100000000000000;
 var gen8Cost = 10000000000000000;
 var gen9Cost = 1000000000000000000;
+
 function incrementer(){
   calculateGain();
   counter+=gain;
-  document.getElementById("btn").innerHTML = counter.toString();
+  if(counter >= 1000000) {  document.getElementById("btn").innerHTML = counter.toExponential(2).toString();}
+  else
+  document.getElementById("btn").innerHTML = Math.trunc(counter).toString();
+  if(gain >= 1000000) {  document.getElementById("btn2").innerHTML = gain.toExponential(2).toString();}
+  else
+  document.getElementById("btn2").innerHTML = Math.trunc(gain*10).toString();
 }
 setInterval(incrementer, 100);
 function buyGen1(){
@@ -146,43 +176,114 @@ function buyGen9(){
 }
 function calculateGain(){
   gen9Tot=(gen9+gen9Pd);
-  document.getElementById("gen9").innerHTML = gen9Tot.toString() + " (" + gen9.toString() + ")";
-  gen8Pd+=(gen9Tot * Math.pow(2,gen9-1));
+  if(gen9Tot >= 1000000){
+    document.getElementById("gen9").innerHTML = gen9Tot.toExponential(2).toString() + " (" + gen9.toString() + ")";} else
+  document.getElementById("gen9").innerHTML = Math.trunc(gen9Tot).toString() + " (" + gen9.toString() + ")";
+  gen9Mult=Math.pow(2,gen9);
+  document.getElementById("gen9Mult").innerHTML = "Generator 9: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
+  
+  gen8Pd+=gen9Tot * gen9Mult;
   gen8Tot=(gen8+gen8Pd);
-  document.getElementById("gen8").innerHTML = gen8Tot.toString() + " (" + gen8.toString() + ")";
-  gen7Pd+=(gen8Tot * Math.pow(2,gen8-1));
+  if(gen8Tot >= 1000000){
+    document.getElementById("gen8").innerHTML = gen8Tot.toExponential(2).toString() + " (" + gen8.toString() + ")";} else
+  document.getElementById("gen8").innerHTML = Math.trunc(gen8Tot).toString() + " (" + gen8.toString() + ")";
+  gen8Mult=Math.pow(1.9,gen8);
+  document.getElementById("gen8Mult").innerHTML = "Generator 8: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
+  
+  gen7Pd+=gen8Tot * gen8Mult;
   gen7Tot=(gen7+gen7Pd);
-  document.getElementById("gen7").innerHTML = gen7Tot.toString() + " (" + gen7.toString() + ")";
-  gen6Pd+=(gen7Tot * Math.pow(2,gen7-1));
+  if(gen7Tot >= 1000000){
+    document.getElementById("gen7").innerHTML = gen7Tot.toExponential(2).toString() + " (" + gen7.toString() + ")";} else
+  document.getElementById("gen7").innerHTML = Math.trunc(gen7Tot).toString() + " (" + gen7.toString() + ")";
+  gen7Mult=Math.pow(1.8,gen7);
+  document.getElementById("gen7Mult").innerHTML = "Generator 7: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
+  
+  gen6Pd+=gen7Tot * gen7Mult;
   gen6Tot=(gen6+gen6Pd);
-  document.getElementById("gen6").innerHTML = gen6Tot.toString() + " (" + gen6.toString() + ")";
-  gen5Pd+=(gen6Tot * Math.pow(2,gen6-1));
+  if(gen6Tot >= 1000000){
+    document.getElementById("gen6").innerHTML = gen6Tot.toExponential(2).toString() + " (" + gen6.toString() + ")";} else
+  document.getElementById("gen6").innerHTML = Math.trunc(gen6Tot).toString() + " (" + gen6.toString() + ")";
+  gen6Mult=Math.pow(1.7,gen6);
+  document.getElementById("gen6Mult").innerHTML = "Generator 6: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
+  
+  gen5Pd+=gen6Tot * gen6Mult;
   gen5Tot=(gen5+gen5Pd);
-  document.getElementById("gen5").innerHTML = gen5Tot.toString() + " (" + gen5.toString() + ")";
-  gen4Pd+=(gen5Tot * Math.pow(2,gen5-1));
+  if(gen5Tot >= 1000000){
+    document.getElementById("gen5").innerHTML = gen5Tot.toExponential(2).toString() + " (" + gen5.toString() + ")";} else
+  document.getElementById("gen5").innerHTML = Math.trunc(gen5Tot).toString() + " (" + gen5.toString() + ")";
+  gen5Mult=Math.pow(1.6,gen5);
+  document.getElementById("gen5Mult").innerHTML = "Generator 5: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
+  
+  gen4Pd+=gen5Tot * gen5Mult;
   gen4Tot=(gen4+gen4Pd);
-  document.getElementById("gen4").innerHTML = gen4Tot.toString() + " (" + gen4.toString() + ")";
-  gen3Pd+=(gen4Tot * Math.pow(2,gen4-1));
+  if(gen4Tot >= 1000000){
+    document.getElementById("gen4").innerHTML = gen4Tot.toExponential(2).toString() + " (" + gen4.toString() + ")";} else
+  document.getElementById("gen4").innerHTML = Math.trunc(gen4Tot).toString() + " (" + gen4.toString() + ")";
+  gen4Mult=Math.pow(1.5,gen4);
+  document.getElementById("gen4Mult").innerHTML = "Generator 4: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
+  
+  gen3Pd+=gen4Tot * gen4Mult;
   gen3Tot=(gen3+gen3Pd);
-  document.getElementById("gen3").innerHTML = gen3Tot.toString() + " (" + gen3.toString() + ")";
-  gen2Pd+=(gen3Tot * Math.pow(2,gen3-1));
+  if(gen3Tot >= 1000000){
+    document.getElementById("gen3").innerHTML = gen3Tot.toExponential(2).toString() + " (" + gen3.toString() + ")";} else
+  document.getElementById("gen3").innerHTML = Math.trunc(gen3Tot).toString() + " (" + gen3.toString() + ")";
+  gen3Mult=Math.pow(1.4,gen3);
+  document.getElementById("gen3Mult").innerHTML = "Generator 3: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
+  
+  gen2Pd+=gen3Tot * gen3Mult;
   gen2Tot=(gen2+gen2Pd);
-  document.getElementById("gen2").innerHTML = gen2Tot.toString() + " (" + gen2.toString() + ")";
-  gen1Pd+=(gen2Tot * Math.pow(2,gen2-1));
+  if(gen2Tot >= 1000000){
+    document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
+  document.getElementById("gen2").innerHTML = Math.trunc(gen2Tot).toString() + " (" + gen2.toString() + ")";
+  gen2Mult=Math.pow(1.3,gen2);
+  document.getElementById("gen2Mult").innerHTML = "Generator 2: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
+  
+  gen1Pd+=gen2Tot * gen2Mult;
   gen1Tot=(gen1+gen1Pd);
-  document.getElementById("gen1").innerHTML = gen1Tot.toString() + " (" + gen1.toString() + ")";
-  gain=(gen1Tot * Math.pow(2,gen1-1));
+  if(gen1Tot >= 1000000){
+    document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
+  document.getElementById("gen1").innerHTML = Math.trunc(gen1Tot).toString() + " (" + gen1.toString() + ")";
+  gen1Mult=Math.pow(1.2,gen1);
+  document.getElementById("gen1Mult").innerHTML = "Generator 1: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
+  gain=gen1Tot * gen1Mult;
 }
 function calculateCost(){
   gen1Cost=10*Math.pow(10,gen1);
   gen2Cost=1000*Math.pow(25,gen2);
-  gen3Cost=100000*Math.pow(100,gen3);
-  gen4Cost=10000000*Math.pow(250,gen4);
-  gen5Cost=1000000000*Math.pow(1000,gen5);
-  gen6Cost=100000000000*Math.pow(2500,gen6);
-  gen7Cost=10000000000000*Math.pow(10000,gen7);
-  gen8Cost=1000000000000000*Math.pow(25000,gen8);
-  gen9Cost=100000000000000000*Math.pow(100000,gen9);
+  gen3Cost=100000*Math.pow(88,gen3);
+  gen4Cost=10000000*Math.pow(234,gen4);
+  gen5Cost=1000000000*Math.pow(986,gen5);
+  gen6Cost=100000000000*Math.pow(2468,gen6);
+  gen7Cost=10000000000000*Math.pow(9567,gen7);
+  gen8Cost=1000000000000000*Math.pow(24235,gen8);
+  gen9Cost=100000000000000000*Math.pow(96342,gen9);
+  if(gen1Cost >= 1000000){
+    gen1Cost = gen1Cost.toExponential(2);
+  }
+  if(gen2Cost >= 1000000){
+    gen2Cost = gen2Cost.toExponential(2);
+  }
+  if(gen3Cost >= 1000000){
+    gen3Cost = gen3Cost.toExponential(2);
+  }
+  if(gen4Cost >= 1000000){
+    gen4Cost = gen4Cost.toExponential(2);
+  }
+  if(gen5Cost >= 1000000){
+    gen5Cost = gen5Cost.toExponential(2);
+  }
+  if(gen6Cost >= 1000000){
+    gen6Cost = gen6Cost.toExponential(2);
+  }
+  if(gen7Cost >= 1000000){
+    gen7Cost = gen7Cost.toExponential(2);
+  }
+  if(gen8Cost >= 1000000){
+    gen8Cost = gen8Cost.toExponential(2);
+  }
+  if(gen9Cost >= 1000000){
+    gen9Cost = gen9Cost.toExponential(2);
+  }
   document.getElementById("gen1Cost").innerHTML = gen1Cost.toString(); 
   document.getElementById("gen2Cost").innerHTML = gen2Cost.toString(); 
   document.getElementById("gen3Cost").innerHTML = gen3Cost.toString(); 
