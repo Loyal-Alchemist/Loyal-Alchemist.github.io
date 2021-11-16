@@ -14,8 +14,11 @@ body {
   text-align: center;
   font-size: 100%;
 }
+.tab{
+  margin-top:2%
+}
 .generatorTable {
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -30,7 +33,13 @@ td{
 <body>
 <div class="center"><p>You have: <span class="btn" id="btn">10</span> Stuff</p></div>
 <div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Stuff per second</p></div>
+<div class="tab" style="text-align:center;">
+  <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Main')">Main</button>
+  <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Upgrades')">Upgrade</button>
+</div>
+<div class="tabcontent" id="Main">
 <table class="generatorTable">
+<tr><td></td><td></td><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyMax()">Max All</button></td></tr>
 <tr><td class="gen1Mult" id="gen1Mult">Generator 1: 1x</td><td class="gen1" id="gen1">0</td><td><button style="width:100px;" type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></td></tr>
 <tr><td class="gen2Mult" id="gen2Mult">Generator 2: 1x</td><td class="gen2" id="gen2">0</td><td><button style="width:100px;" type="button" class="gen2Cost" id="gen2Cost" onclick="buyGen2()">1000</button></td></tr>
 <tr><td class="gen3Mult" id="gen3Mult">Generator 3: 1x</td><td class="gen3" id="gen3">0</td><td><button style="width:100px;" type="button" class="gen3Cost" id="gen3Cost" onclick="buyGen3()">100000</button></td></tr>
@@ -42,6 +51,26 @@ td{
 <tr><td class="gen9Mult" id="gen9Mult">Generator 9: 1x</td><td class="gen9" id="gen9">0</td><td><button style="width:100px;" type="button" class="gen9Cost" id="gen9Cost" onclick="buyGen9()">1.00e+17</button></td></tr>
 </table>
 <script>
+function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 var counter = 10;
 var gain = 0;
 
@@ -173,6 +202,40 @@ function buyGen9(){
   gen9+=1;
   calculateGain();
   calculateCost();}
+}
+var chc = 1;
+function buyMax(){
+  chc = 1;
+  while(chc==1){
+  if(counter>=gen9Cost){
+  buyGen9();
+  }else//{
+  if(counter>=gen8Cost){
+  buyGen8();
+  }else//{
+  if(counter>=gen7Cost){
+  buyGen7();
+  }else//{
+  if(counter>=gen6Cost){
+  buyGen6();
+  }else//{
+  if(counter>=gen5Cost){
+  buyGen5();
+  }else//{
+  if(counter>=gen4Cost){
+  buyGen4();
+  }else//{
+  if(counter>=gen3Cost){
+  buyGen3();
+  }else//{
+  if(counter>=gen2Cost){
+  buyGen2();
+  }else//{
+  if(counter>=gen1Cost){
+  buyGen1();
+  }else
+  chc=0;//}}}}}}}}
+  }
 }
 function calculateGain(){
   gen9Tot=(gen9+gen9Pd);
