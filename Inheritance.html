@@ -733,6 +733,8 @@ function calculateGain(){
     document.getElementById("gen9").innerHTML = gen9Tot.toExponential(2).toString() + " (" + gen9.toString() + ")";} else
   document.getElementById("gen9").innerHTML = Math.trunc(gen9Tot).toString() + " (" + gen9.toString() + ")";
   gen9Mult=ExpantaNum.pow(ExpantaNum.add(2,vitalityEff1),gen9);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen9Mult").innerHTML = gen9Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen9Mult").innerHTML = "Country: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
   
   gen8Pd=ExpantaNum.add(gen8Pd,ExpantaNum.mul(gen9Tot , gen9Mult));
@@ -741,6 +743,8 @@ function calculateGain(){
     document.getElementById("gen8").innerHTML = gen8Tot.toExponential(2).toString() + " (" + gen8.toString() + ")";} else
   document.getElementById("gen8").innerHTML = Math.trunc(gen8Tot).toString() + " (" + gen8.toString() + ")";
   gen8Mult=ExpantaNum.pow(ExpantaNum.add(1.9,vitalityEff1),gen8);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen8Mult").innerHTML = gen8Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen8Mult").innerHTML = "State: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
   
   gen7Pd=ExpantaNum.add(gen7Pd,ExpantaNum.mul(gen8Tot , gen8Mult));
@@ -749,6 +753,8 @@ function calculateGain(){
     document.getElementById("gen7").innerHTML = gen7Tot.toExponential(2).toString() + " (" + gen7.toString() + ")";} else
   document.getElementById("gen7").innerHTML = Math.trunc(gen7Tot).toString() + " (" + gen7.toString() + ")";
   gen7Mult=ExpantaNum.pow(ExpantaNum.add(1.8,vitalityEff1),gen7);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen7Mult").innerHTML = gen7Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen7Mult").innerHTML = "Metropolis: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
   
   gen6Pd=ExpantaNum.add(gen6Pd,ExpantaNum.mul(gen7Tot , gen7Mult));
@@ -757,6 +763,8 @@ function calculateGain(){
     document.getElementById("gen6").innerHTML = gen6Tot.toExponential(2).toString() + " (" + gen6.toString() + ")";} else
   document.getElementById("gen6").innerHTML = Math.trunc(gen6Tot).toString() + " (" + gen6.toString() + ")";
   gen6Mult=ExpantaNum.pow(ExpantaNum.add(1.7,vitalityEff1),gen6);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen6Mult").innerHTML = gen6Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen6Mult").innerHTML = "County: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
   
   gen5Pd=ExpantaNum.add(gen5Pd,ExpantaNum.mul(gen6Tot , gen6Mult));
@@ -765,6 +773,8 @@ function calculateGain(){
     document.getElementById("gen5").innerHTML = gen5Tot.toExponential(2).toString() + " (" + gen5.toString() + ")";} else
   document.getElementById("gen5").innerHTML = Math.trunc(gen5Tot).toString() + " (" + gen5.toString() + ")";
   gen5Mult=ExpantaNum.pow(ExpantaNum.add(1.6,vitalityEff1),gen5);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen5Mult").innerHTML = gen5Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen5Mult").innerHTML = "City: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
   
   gen4Pd=ExpantaNum.add(gen4Pd,ExpantaNum.mul(gen5Tot , gen5Mult));
@@ -773,6 +783,8 @@ function calculateGain(){
     document.getElementById("gen4").innerHTML = gen4Tot.toExponential(2).toString() + " (" + gen4.toString() + ")";} else
   document.getElementById("gen4").innerHTML = Math.trunc(gen4Tot).toString() + " (" + gen4.toString() + ")";
   gen4Mult=ExpantaNum.pow(ExpantaNum.add(1.5,vitalityEff1),gen4);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen4Mult").innerHTML = gen4Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen4Mult").innerHTML = "Town: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
   
   gen3Pd=ExpantaNum.add(gen3Pd,ExpantaNum.mul(gen4Tot , gen4Mult));
@@ -781,6 +793,8 @@ function calculateGain(){
     document.getElementById("gen3").innerHTML = gen3Tot.toExponential(2).toString() + " (" + gen3.toString() + ")";} else
   document.getElementById("gen3").innerHTML = Math.trunc(gen3Tot).toString() + " (" + gen3.toString() + ")";
   gen3Mult=ExpantaNum.pow(ExpantaNum.add(1.4,vitalityEff1),gen3);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen3Mult").innerHTML = gen3Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen3Mult").innerHTML = "Village: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
   
   gen2Pd=ExpantaNum.add(gen2Pd,ExpantaNum.mul(gen3Tot , gen3Mult));
@@ -789,6 +803,8 @@ function calculateGain(){
   document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
   document.getElementById("gen2").innerHTML = Math.trunc(gen2Tot).toString() + " (" + gen2.toString() + ")";
   gen2Mult=ExpantaNum.pow(ExpantaNum.add(1.3,vitalityEff1),gen2);
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen2Mult").innerHTML = gen2Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen2Mult").innerHTML = "Hamlet: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
   
   gen1Pd=ExpantaNum.add(gen1Pd,ExpantaNum.mul(gen2Tot , gen2Mult));
@@ -797,6 +813,8 @@ function calculateGain(){
   document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
   document.getElementById("gen1").innerHTML = Math.trunc(gen1Tot).toString() + " (" + gen1.toString() + ")";
   gen1Mult=ExpantaNum.pow(ExpantaNum.add(1.2,vitalityEff1),ExpantaNum.add(gen1,dexterityEff1));
+  if(gen9Mult >= 1000000){
+    document.getElementById("gen1Mult").innerHTML = gen1Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen1Mult").innerHTML = "Peasent: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
   
   
