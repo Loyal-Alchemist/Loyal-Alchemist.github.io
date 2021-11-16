@@ -280,12 +280,14 @@ localStorage.setItem("sgen9",gen9);
 localStorage.setItem("sgen9Pd",gen9Pd);
 
 localStorage.setItem("sprowessAmt",prowessAmt);
+console.log(prowessAmt);
+console.log(localStorage.getItem("sprowessAmt"));
 
 localStorage.setItem("svitalityAmt",vitalityAmt);
 
 localStorage.setItem("sdexterityAmt",dexterityAmt);
 
-localStorage.setItem("sdexterityAmt",charismaAmt);
+localStorage.setItem("scharismaAmt",charismaAmt);
 
 localStorage.setItem("swillAmt",willAmt);
 
@@ -303,7 +305,7 @@ localStorage.setItem("scurseGrimoreAmt",curseGrimoreAmt);
 
 localStorage.setItem("sdragonScaleAmt",dragonScaleAmt);
 }
-var fix1=0, fix2=0, fix3=0, fix4=0, fix5=0, fix6=0, fix7=0, fix8=0, fix9=0;
+var fix1=0, fix2=0, fix3=0, fix4=0, fix5=0, fix6=0, fix7=0, fix8=0, fix9=0, fix11=0, fix21=0, fix31=0, fix41=0, fix51=0, fix61=0;
 function loading(){
 counter=localStorage.getItem("scounter");
 gain=localStorage.getItem("sgain");
@@ -362,18 +364,50 @@ gen9 += fix9%10;
 fix9 = Math.floor(fix9/10);}
 gen9Pd=localStorage.getItem("sgen9Pd");
 
-prowessAmt=localStorage.getItem("sprowessAmt");
-
-vitalityAmt=localStorage.getItem("svitalityAmt");
-
-dexterityAmt=localStorage.getItem("sdexterityAmt");
-
-charismaAmt=localStorage.getItem("scharismaAmt");
-
-willAmt=localStorage.getItem("swillAmt");
-
-greedAmt=localStorage.getItem("sgreedAmt");
-
+fix11=localStorage.getItem("sprowessAmt");
+while(fix11>0){
+prowessAmt += fix11%10;
+fix11 = Math.floor(fix11/10);}
+console.log(prowessAmt);
+attChoice = 1;
+calculateAtt();
+prowessAmt-=1;
+fix21=localStorage.getItem("svitalityAmt");
+while(fix21>0){
+vitalityAmt += fix21%10;
+fix21 = Math.floor(fix21/10);}
+attChoice = 2;
+calculateAtt();
+vitalityAmt-=1;
+fix31=localStorage.getItem("sdexterityAmt");
+while(fix31>0){
+dexterityAmt += fix31%10;
+fix31 = Math.floor(fix31/10);}
+attChoice = 3;
+calculateAtt();
+dexterityAmt-=1;
+fix41=localStorage.getItem("scharismaAmt");
+while(fix41>0){
+charismaAmt += fix41%10;
+fix41 = Math.floor(fix41/10);}
+attChoice = 4;
+calculateAtt();
+charismaAmt-=1;
+fix51=localStorage.getItem("swillAmt");
+while(fix51>0){
+willAmt += fix51%10;
+fix51 = Math.floor(fix51/10);}
+attChoice = 5;
+calculateAtt();
+willAmt-=1;
+fix61=localStorage.getItem("sgreedAmt");
+while(fix61>0){
+greedAmt += fix61%10;
+fix61 = Math.floor(fix61/10);}
+attChoice = 6;
+calculateAtt();
+greedAmt-=1;
+attChoice = 0;
 goldChaliceAmt=localStorage.getItem("sgoldChaliceAmt");
 
 earthShieldAmt=localStorage.getItem("searthShieldAmt");
@@ -453,7 +487,7 @@ function buyDragonScales(){
   calculateArtifact();}
 }
 function start1(){
-counter = 10;
+counter = 10e30;
 gain = 0;
 
 gen1 = 0;
