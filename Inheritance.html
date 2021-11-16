@@ -7,7 +7,7 @@ body {
 }
 .center {
   text-align: center;
-  margin-top: 5%;
+  margin-top: 3%;
   font-size: 140%;
 }
 .center2 {
@@ -28,28 +28,57 @@ body {
 td{
   height: 35px;
 }
+.background{
+   position: absolute;
+   top: -6.5%;
+   left: 26.62%;
+   bottom: 0;
+   right: 0;
+   z-index: -1;
+   overflow: hidden;
+   font-size: 4500%;
+   display: block;
+   opacity:0.4;
+}
 </style>
 </head>
 <body>
-<div class="center"><p>You have: <span class="btn" id="btn">10</span> Stuff</p></div>
-<div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Stuff per second</p></div>
+<div class="center"><p>You have: <span class="btn" id="btn">10</span> Treasure</p></div>
+<div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Treasure per second</p></div>
 <div class="tab" style="text-align:center;">
-  <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Main')">Main</button>
-  <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Upgrades')">Upgrade</button>
+  <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Collect')">Collect</button>
+  <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Improve')" id="unlock1">Improve</button>
 </div>
-<div class="tabcontent" id="Main">
+
+<div class="tabcontent" id="Collect">
 <table class="generatorTable">
-<tr><td></td><td></td><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyMax()">Max All</button></td></tr>
-<tr><td class="gen1Mult" id="gen1Mult">Generator 1: 1x</td><td class="gen1" id="gen1">0</td><td><button style="width:100px;" type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></td></tr>
-<tr><td class="gen2Mult" id="gen2Mult">Generator 2: 1x</td><td class="gen2" id="gen2">0</td><td><button style="width:100px;" type="button" class="gen2Cost" id="gen2Cost" onclick="buyGen2()">1000</button></td></tr>
-<tr><td class="gen3Mult" id="gen3Mult">Generator 3: 1x</td><td class="gen3" id="gen3">0</td><td><button style="width:100px;" type="button" class="gen3Cost" id="gen3Cost" onclick="buyGen3()">100000</button></td></tr>
-<tr><td class="gen4Mult" id="gen4Mult">Generator 4: 1x</td><td class="gen4" id="gen4">0</td><td><button style="width:100px;" type="button" class="gen4Cost" id="gen4Cost" onclick="buyGen4()">1.00e+7</button></td></tr>
-<tr><td class="gen5Mult" id="gen5Mult">Generator 5: 1x</td><td class="gen5" id="gen5">0</td><td><button style="width:100px;" type="button" class="gen5Cost" id="gen5Cost" onclick="buyGen5()">1.00e+9</button></td></tr>
-<tr><td class="gen6Mult" id="gen6Mult">Generator 6: 1x</td><td class="gen6" id="gen6">0</td><td><button style="width:100px;" type="button" class="gen6Cost" id="gen6Cost" onclick="buyGen6()">1.00e+11</button></td></tr>
-<tr><td class="gen7Mult" id="gen7Mult">Generator 7: 1x</td><td class="gen7" id="gen7">0</td><td><button style="width:100px;" type="button" class="gen7Cost" id="gen7Cost" onclick="buyGen7()">1.00e+13</button></td></tr>
-<tr><td class="gen8Mult" id="gen8Mult">Generator 8: 1x</td><td class="gen8" id="gen8">0</td><td><button style="width:100px;" type="button" class="gen8Cost" id="gen8Cost" onclick="buyGen8()">1.00e+15</button></td></tr>
-<tr><td class="gen9Mult" id="gen9Mult">Generator 9: 1x</td><td class="gen9" id="gen9">0</td><td><button style="width:100px;" type="button" class="gen9Cost" id="gen9Cost" onclick="buyGen9()">1.00e+17</button></td></tr>
+<tr><td></td><td>Collect Treasure to grow your Hoard</td><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyMax()">Max All</button></td></tr>
+<tr><td class="gen1Mult" id="gen1Mult">Peasent: 1x</td><td class="gen1" id="gen1">0</td><td><button style="width:100px;" type="button" class="gen1Cost" id="gen1Cost" onclick="buyGen1()">10</button></td></tr>
+<tr><td class="gen2Mult" id="gen2Mult">Hamlet: 1x</td><td class="gen2" id="gen2">0</td><td><button style="width:100px;" type="button" class="gen2Cost" id="gen2Cost" onclick="buyGen2()">1000</button></td></tr>
+<tr><td class="gen3Mult" id="gen3Mult">Village: 1x</td><td class="gen3" id="gen3">0</td><td><button style="width:100px;" type="button" class="gen3Cost" id="gen3Cost" onclick="buyGen3()">100000</button></td></tr>
+<tr><td class="gen4Mult" id="gen4Mult">Town: 1x</td><td class="gen4" id="gen4">0</td><td><button style="width:100px;" type="button" class="gen4Cost" id="gen4Cost" onclick="buyGen4()">1.00e+7</button></td></tr>
+<tr><td class="gen5Mult" id="gen5Mult">City: 1x</td><td class="gen5" id="gen5">0</td><td><button style="width:100px;" type="button" class="gen5Cost" id="gen5Cost" onclick="buyGen5()">1.00e+9</button></td></tr>
+<tr><td class="gen6Mult" id="gen6Mult">County: 1x</td><td class="gen6" id="gen6">0</td><td><button style="width:100px;" type="button" class="gen6Cost" id="gen6Cost" onclick="buyGen6()">1.00e+11</button></td></tr>
+<tr><td class="gen7Mult" id="gen7Mult">Metropolis: 1x</td><td class="gen7" id="gen7">0</td><td><button style="width:100px;" type="button" class="gen7Cost" id="gen7Cost" onclick="buyGen7()">1.00e+13</button></td></tr>
+<tr><td class="gen8Mult" id="gen8Mult">State: 1x</td><td class="gen8" id="gen8">0</td><td><button style="width:100px;" type="button" class="gen8Cost" id="gen8Cost" onclick="buyGen8()">1.00e+15</button></td></tr>
+<tr><td class="gen9Mult" id="gen9Mult">Country: 1x</td><td class="gen9" id="gen9">0</td><td><button style="width:100px;" type="button" class="gen9Cost" id="gen9Cost" onclick="buyGen9()">1.00e+17</button></td></tr>
 </table>
+</div>
+
+<div class="tabcontent" id="Improve">
+<span class="background">&#9956;</span>
+<button style="position: absolute; width:100px; top: 29%; left:46.68%;" onclick="prowessChoice()">Prowess</button>
+<span style="position: absolute; width:100px; top: 31.8%; left:43.68%; color:red; white-space: nowrap;">Multiply Treasure gain by <span class="prowess" id="prowess">1</span>x<br>Multiply Vitality gain by <span class="prowess2" id="prowess2">1</span>x</span>
+<button style="position: absolute; width:100px; top: 55%; left:30%;" onclick="willChoice()">Will</button>
+<span style="position: absolute; width:100px; top: 57.8%; left:27%; color:red; white-space: nowrap;">Gain <span class="will" id="will">0</span> Planets per second<br>Multiply Prowess gain by <span class="will2" id="will2">1</span>x</span>
+<button style="position: absolute; width:100px; top: 55%; left:63.8%;" onclick="vitalityChoice()">Vitality</button>
+<span style="position: absolute; width:100px; top: 57.8%; left:60.8%; color:red; white-space: nowrap;">Increase per upgrade Mult by <span class="vitality" id="vitality">0</span><br>Multiply Dexterity gain by <span class="vitality2" id="vitality2">1</span>x</span>
+<button style="position: absolute; width:100px; top: 95%; left:57.5%;" onclick="dexterityChoice()">Dexterity</button>
+<span style="position: absolute; width:100px; top: 89.2%; left:54.5%; color:red; white-space: nowrap;">Gain <span class="dexterity" id="dexterity">0</span> free Hamlet purchase<br>Multiply Charisma gain by <span class="dexterity2" id="dexterity2">1</span>x</span>
+<button style="position: absolute; width:100px; top: 95%; left:36.3%;" onclick="charismaChoice()">Charisma</button>
+<span style="position: absolute; width:100px; top: 89.2%; left:33.3%; color:red; white-space: nowrap;">Divide upgrade costs by <span class="charisma" id="charisma">1</span>x<br>Multiply Will gain by <span class="charisma2" id="charisma2">1</span>x</span>
+
+</div>
 <script>
 function openTab(evt, tabName) {
   // Declare all variables
@@ -71,6 +100,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
 var counter = 10;
 var gain = 0;
 
@@ -129,17 +159,96 @@ var gen7Cost = 100000000000000;
 var gen8Cost = 10000000000000000;
 var gen9Cost = 1000000000000000000;
 
+var prowessAmt = 0;
+var prowessEff1 = 1;
+var prowessEff2 = 1;
+
+var vitalityAmt = 0;
+var vitalityEff1 = 0;
+var vitalityEff2 = 1;
+
+var dexterityAmt = 0;
+var dexterityEff1 = 0;
+var dexterityEff2 = 1;
+
+var charismaAmt = 0;
+var charismaEff1 = 1;
+var charismaEff2 = 1;
+
+var willAmt = 0;
+var willEff1 = 0;
+var willEff2 = 1;
+
+var attChoice = 0;
 function incrementer(){
+  calculateCost();
   calculateGain();
+  calculateAtt();
   counter+=gain;
   if(counter >= 1000000) {  document.getElementById("btn").innerHTML = counter.toExponential(2).toString();}
   else
   document.getElementById("btn").innerHTML = Math.trunc(counter).toString();
   if(gain >= 1000000) {  document.getElementById("btn2").innerHTML = gain.toExponential(2).toString();}
-  else
-  document.getElementById("btn2").innerHTML = Math.trunc(gain*10).toString();
+  else{
+  document.getElementById("btn2").innerHTML = Math.trunc(gain*10).toString();}
+  if((counter >= 1e30) && (document.getElementById("unlock1").style.visibility = "hidden")){
+  document.getElementById("unlock1").style.visibility = "visible";}
 }
 setInterval(incrementer, 100);
+openTab(event, 'Collect');
+
+function vitalityChoice(){
+  attChoice=2;
+}
+function dexterityChoice(){
+  attChoice=3;
+}
+function charismaChoice(){
+  attChoice=4;
+}
+function willChoice(){
+  attChoice=5;
+}
+function prowessChoice(){
+  attChoice=1;
+}
+function calculateAtt(){
+  if(attChoice==1){
+    prowessAmt+=willEff2;
+    prowessEff1=1+Math.pow(prowessAmt,.5);
+    document.getElementById("prowess").innerHTML = (Math.trunc(prowessEff1*10)/10).toString();
+    prowessEff2=1+Math.pow(prowessAmt,.2);
+    document.getElementById("prowess2").innerHTML = (Math.trunc(prowessEff2*10)/10).toString();
+  }
+    if(attChoice==2){
+    vitalityAmt+=willEff2;
+    vitalityEff1=0.01*Math.log(vitalityAmt);
+    document.getElementById("vitality").innerHTML = (Math.trunc(vitalityEff1*100)/100).toString();
+    vitalityEff2=1+Math.pow(vitalityAmt,.2);
+    document.getElementById("vitality2").innerHTML = (Math.trunc(vitalityEff2*10)/10).toString();
+  }
+    if(attChoice==3){
+    dexterityAmt+=willEff2;
+    dexterityEff1=Math.pow(dexterityAmt,.2);
+    document.getElementById("dexterity").innerHTML = (Math.trunc(dexterityEff1*10)/10).toString();
+    dexterityEff2=1+Math.pow(dexterityAmt,.2);
+    document.getElementById("dexterity2").innerHTML = (Math.trunc(dexterityEff2*10)/10).toString();
+  }
+    if(attChoice==4){
+    charismaAmt+=willEff2;
+    charismaEff1=1+Math.pow(charismaAmt,.25);
+    document.getElementById("charisma").innerHTML = (Math.trunc(charismaEff1*10)/10).toString();
+    charismaEff2=1+Math.pow(charismaAmt,.2);
+    document.getElementById("charisma2").innerHTML = (Math.trunc(charismaEff2*10)/10).toString();
+  }
+    if(attChoice==5){
+    willAmt+=willEff2;
+    willEff1=Math.pow(willAmt,.1);
+    document.getElementById("will").innerHTML = (Math.trunc(willEff1*10)/10).toString();
+    willEff2=1+Math.pow(willAmt,.2);
+    document.getElementById("will2").innerHTML = (Math.trunc(willEff2*10)/10).toString();
+  }
+}
 function buyGen1(){
   if(counter>=gen1Cost){
   counter-=gen1Cost;
@@ -238,88 +347,89 @@ function buyMax(){
   }
 }
 function calculateGain(){
+  gen9Pd+=willEff1;
   gen9Tot=(gen9+gen9Pd);
   if(gen9Tot >= 1000000){
     document.getElementById("gen9").innerHTML = gen9Tot.toExponential(2).toString() + " (" + gen9.toString() + ")";} else
   document.getElementById("gen9").innerHTML = Math.trunc(gen9Tot).toString() + " (" + gen9.toString() + ")";
-  gen9Mult=Math.pow(2,gen9);
-  document.getElementById("gen9Mult").innerHTML = "Generator 9: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
+  gen9Mult=Math.pow((2+vitalityEff1),gen9);
+  document.getElementById("gen9Mult").innerHTML = "Country: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
   
   gen8Pd+=gen9Tot * gen9Mult;
   gen8Tot=(gen8+gen8Pd);
   if(gen8Tot >= 1000000){
     document.getElementById("gen8").innerHTML = gen8Tot.toExponential(2).toString() + " (" + gen8.toString() + ")";} else
   document.getElementById("gen8").innerHTML = Math.trunc(gen8Tot).toString() + " (" + gen8.toString() + ")";
-  gen8Mult=Math.pow(1.9,gen8);
-  document.getElementById("gen8Mult").innerHTML = "Generator 8: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
+  gen8Mult=Math.pow((1.9+vitalityEff1),gen8);
+  document.getElementById("gen8Mult").innerHTML = "State: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
   
   gen7Pd+=gen8Tot * gen8Mult;
   gen7Tot=(gen7+gen7Pd);
   if(gen7Tot >= 1000000){
     document.getElementById("gen7").innerHTML = gen7Tot.toExponential(2).toString() + " (" + gen7.toString() + ")";} else
   document.getElementById("gen7").innerHTML = Math.trunc(gen7Tot).toString() + " (" + gen7.toString() + ")";
-  gen7Mult=Math.pow(1.8,gen7);
-  document.getElementById("gen7Mult").innerHTML = "Generator 7: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
+  gen7Mult=Math.pow((1.8+vitalityEff1),gen7);
+  document.getElementById("gen7Mult").innerHTML = "Metropolis: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
   
   gen6Pd+=gen7Tot * gen7Mult;
   gen6Tot=(gen6+gen6Pd);
   if(gen6Tot >= 1000000){
     document.getElementById("gen6").innerHTML = gen6Tot.toExponential(2).toString() + " (" + gen6.toString() + ")";} else
   document.getElementById("gen6").innerHTML = Math.trunc(gen6Tot).toString() + " (" + gen6.toString() + ")";
-  gen6Mult=Math.pow(1.7,gen6);
-  document.getElementById("gen6Mult").innerHTML = "Generator 6: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
+  gen6Mult=Math.pow((1.7+vitalityEff1),gen6);
+  document.getElementById("gen6Mult").innerHTML = "County: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
   
   gen5Pd+=gen6Tot * gen6Mult;
   gen5Tot=(gen5+gen5Pd);
   if(gen5Tot >= 1000000){
     document.getElementById("gen5").innerHTML = gen5Tot.toExponential(2).toString() + " (" + gen5.toString() + ")";} else
   document.getElementById("gen5").innerHTML = Math.trunc(gen5Tot).toString() + " (" + gen5.toString() + ")";
-  gen5Mult=Math.pow(1.6,gen5);
-  document.getElementById("gen5Mult").innerHTML = "Generator 5: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
+  gen5Mult=Math.pow((1.6+vitalityEff1),gen5);
+  document.getElementById("gen5Mult").innerHTML = "City: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
   
   gen4Pd+=gen5Tot * gen5Mult;
   gen4Tot=(gen4+gen4Pd);
   if(gen4Tot >= 1000000){
     document.getElementById("gen4").innerHTML = gen4Tot.toExponential(2).toString() + " (" + gen4.toString() + ")";} else
   document.getElementById("gen4").innerHTML = Math.trunc(gen4Tot).toString() + " (" + gen4.toString() + ")";
-  gen4Mult=Math.pow(1.5,gen4);
-  document.getElementById("gen4Mult").innerHTML = "Generator 4: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
+  gen4Mult=Math.pow((1.5+vitalityEff1),gen4);
+  document.getElementById("gen4Mult").innerHTML = "Town: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
   
   gen3Pd+=gen4Tot * gen4Mult;
   gen3Tot=(gen3+gen3Pd);
   if(gen3Tot >= 1000000){
     document.getElementById("gen3").innerHTML = gen3Tot.toExponential(2).toString() + " (" + gen3.toString() + ")";} else
   document.getElementById("gen3").innerHTML = Math.trunc(gen3Tot).toString() + " (" + gen3.toString() + ")";
-  gen3Mult=Math.pow(1.4,gen3);
-  document.getElementById("gen3Mult").innerHTML = "Generator 3: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
+  gen3Mult=Math.pow((1.4+vitalityEff1),gen3);
+  document.getElementById("gen3Mult").innerHTML = "Village: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
   
   gen2Pd+=gen3Tot * gen3Mult;
   gen2Tot=(gen2+gen2Pd);
   if(gen2Tot >= 1000000){
     document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
   document.getElementById("gen2").innerHTML = Math.trunc(gen2Tot).toString() + " (" + gen2.toString() + ")";
-  gen2Mult=Math.pow(1.3,gen2);
-  document.getElementById("gen2Mult").innerHTML = "Generator 2: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
+  gen2Mult=Math.pow((1.3+vitalityEff1),gen2);
+  document.getElementById("gen2Mult").innerHTML = "Hamlet: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
   
   gen1Pd+=gen2Tot * gen2Mult;
-  gen1Tot=(gen1+gen1Pd);
+  gen1Tot=(gen1+gen1Pd+dexterityEff1);
   if(gen1Tot >= 1000000){
     document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
   document.getElementById("gen1").innerHTML = Math.trunc(gen1Tot).toString() + " (" + gen1.toString() + ")";
-  gen1Mult=Math.pow(1.2,gen1);
-  document.getElementById("gen1Mult").innerHTML = "Generator 1: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
-  gain=gen1Tot * gen1Mult;
+  gen1Mult=Math.pow((1.2+vitalityEff1),(gen1+dexterityEff1));
+  document.getElementById("gen1Mult").innerHTML = "Peasent: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
+  gain=gen1Tot * gen1Mult * prowessEff1;
 }
 function calculateCost(){
-  gen1Cost=10*Math.pow(10,gen1);
-  gen2Cost=1000*Math.pow(25,gen2);
-  gen3Cost=100000*Math.pow(88,gen3);
-  gen4Cost=10000000*Math.pow(234,gen4);
-  gen5Cost=1000000000*Math.pow(986,gen5);
-  gen6Cost=100000000000*Math.pow(2468,gen6);
-  gen7Cost=10000000000000*Math.pow(9567,gen7);
-  gen8Cost=1000000000000000*Math.pow(24235,gen8);
-  gen9Cost=100000000000000000*Math.pow(96342,gen9);
+  gen1Cost=10*Math.pow(10,gen1)/charismaEff1;
+  gen2Cost=1000*Math.pow(25,gen2)/charismaEff1;
+  gen3Cost=100000*Math.pow(88,gen3)/charismaEff1;
+  gen4Cost=10000000*Math.pow(234,gen4)/charismaEff1;
+  gen5Cost=1000000000*Math.pow(986,gen5)/charismaEff1;
+  gen6Cost=100000000000*Math.pow(2468,gen6)/charismaEff1;
+  gen7Cost=10000000000000*Math.pow(9567,gen7)/charismaEff1;
+  gen8Cost=1000000000000000*Math.pow(24235,gen8)/charismaEff1;
+  gen9Cost=100000000000000000*Math.pow(96342,gen9)/charismaEff1;
   if(gen1Cost >= 1000000){
     gen1Cost = gen1Cost.toExponential(2);
   }
