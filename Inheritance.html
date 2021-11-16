@@ -25,6 +25,14 @@ body {
   text-align: center;
   table-layout:fixed;
 }
+.artifactTable {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+  table-layout:fixed;
+}
 td{
   height: 35px;
 }
@@ -83,8 +91,9 @@ td{
 </div>
 
 <div class="tabcontent" id="Artifacts">
-<table class="generatorTable">
-<tr><td><button style="width:100px;" type="button" class="artifactReset" id="artifactReset" onclick="artifactResetMid()">2</button></td></tr>
+<table class="artifactTable">
+<tr><td></td><td></td><td></td><td><button style="width:100px;" type="button" class="artifactReset" id="artifactReset" onclick="artifactResetMid()">2</button></td></tr>
+<tr><td></td><td></td><td></td><td><span id="artifactAmt"></span></td></tr>
 <tr><td>Golden Chalice</td><td>Holy Sword</td><td>Earthen Shield</td><td>Winged Boots</td><td>Fairy Amulet</td><td>Cursed Grimore</td><td>Draconic Scales<td></tr>
 <tr><td>Midas's Favorite</td><td>Poor Hero</td><td>Spirit Blessed!</td><td>Too Small For You</td><td>Feels Magical</td><td>It's Wispering?</td><td>They Stir Your Greed<td></tr>
 <tr><td><span id="goldChalice"></span></td><td><span id="holySword"></span></td><td><span id="earthShield"></span></td><td><span id="wingBoots"></span></td><td><span id="fairyAmulet"></span></td><td><span id="curseGrimore"></span></td><td><span id="dragonScale"></span></td></tr>
@@ -92,6 +101,7 @@ td{
 </table>
 </div>
 
+<script src="ExpantaNum.js"></script>
 <script>
 function openTab(evt, tabName) {
   // Declare all variables
@@ -114,63 +124,63 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-var counter = 1e101;
-var gain = 0;
+var counter = ExpantaNum(10);
+var gain = ExpantaNum(0);
 
 var gen1 = 0;
-var gen1Pd = 0;
-var gen1Tot = 0;
-var gen1Mult = 1;
+var gen1Pd = ExpantaNum(0);
+var gen1Tot = ExpantaNum(0);
+var gen1Mult = ExpantaNum(1);
 
 var gen2 = 0;
-var gen2Pd = 0;
-var gen2Tot = 0;
-var gen2Mult = 1;
+var gen2Pd = ExpantaNum(0);
+var gen2Tot = ExpantaNum(0);
+var gen2Mult = ExpantaNum(1);
 
 var gen3 = 0;
-var gen3Pd = 0;
-var gen3Tot = 0;
-var gen3Mult = 1;
+var gen3Pd = ExpantaNum(0);
+var gen3Tot = ExpantaNum(0);
+var gen3Mult = ExpantaNum(1);
 
 var gen4 = 0;
-var gen4Pd = 0;
-var gen4Tot = 0;
-var gen4Mult = 1;
+var gen4Pd = ExpantaNum(0);
+var gen4Tot = ExpantaNum(0);
+var gen4Mult = ExpantaNum(1);
 
 var gen5 = 0;
-var gen5Pd = 0;
-var gen5Tot = 0;
-var gen5Mult = 1;
+var gen5Pd = ExpantaNum(0);
+var gen5Tot = ExpantaNum(0);
+var gen5Mult = ExpantaNum(1);
 
 var gen6 = 0;
-var gen6Pd = 0;
-var gen6Tot = 0;
-var gen6Mult = 1;
+var gen6Pd = ExpantaNum(0);
+var gen6Tot = ExpantaNum(0);
+var gen6Mult = ExpantaNum(1);
 
 var gen7 = 0;
-var gen7Pd = 0;
-var gen7Tot = 0;
-var gen7Mult = 1;
+var gen7Pd = ExpantaNum(0);
+var gen7Tot = ExpantaNum(0);
+var gen7Mult = ExpantaNum(1);
 
 var gen8 = 0;
-var gen8Pd = 0;
-var gen8Tot = 0;
-var gen8Mult = 1;
+var gen8Pd = ExpantaNum(0);
+var gen8Tot = ExpantaNum(0);
+var gen8Mult = ExpantaNum(1);
 
 var gen9 = 0;
-var gen9Pd = 0;
-var gen9Tot = 0;
-var gen9Mult = 1;
+var gen9Pd = ExpantaNum(0);
+var gen9Tot = ExpantaNum(0);
+var gen9Mult = ExpantaNum(1);
 
-var gen1Cost = 10;
-var gen2Cost = 1000;
-var gen3Cost = 100000;
-var gen4Cost = 100000000;
-var gen5Cost = 10000000000;
-var gen6Cost = 1000000000000;
-var gen7Cost = 100000000000000;
-var gen8Cost = 10000000000000000;
-var gen9Cost = 1000000000000000000;
+var gen1Cost = ExpantaNum(10);
+var gen2Cost = ExpantaNum(1000);
+var gen3Cost = ExpantaNum(100000);
+var gen4Cost = ExpantaNum(100000000);
+var gen5Cost = ExpantaNum(10000000000);
+var gen6Cost = ExpantaNum(1000000000000);
+var gen7Cost = ExpantaNum(100000000000000);
+var gen8Cost = ExpantaNum(10000000000000000);
+var gen9Cost = ExpantaNum(1000000000000000000);
 
 var prowessAmt = 0;
 var prowessEff1 = 1;
@@ -240,7 +250,7 @@ function incrementer(){
   calculateCost();
   calculateGain();
   calculateAtt();
-  counter+=gain;
+  counter = ExpantaNum.add(counter,gain);
   if(counter >= 1000000) {  document.getElementById("btn").innerHTML = counter.toExponential(2).toString();}
   else
   document.getElementById("btn").innerHTML = Math.trunc(counter).toString();
@@ -382,8 +392,9 @@ greedEff1 = 1;
 attChoice = 0;}
 
 function calculateArtifact(){
-  artifactReset = (Math.log(counter)/Math.log(1e20))-3;
+  artifactReset = (ExpantaNum.log(counter)/ExpantaNum.log(1e20))-3;
   document.getElementById("artifactReset").innerHTML = artifactReset;
+  document.getElementById("artifactAmt").innerHTML = artifactShard;
   if(goldChaliceAmt<15){
   goldChaliceCost=Math.pow(Math.pow(3,goldChaliceAmt),.5);}
   goldChaliceEff1=Math.pow(100,goldChaliceAmt);
@@ -474,64 +485,64 @@ function calculateAtt(){
   }
 }
 function buyGen1(){
-  if(counter>=gen1Cost){
-  counter-=gen1Cost;
+  if(ExpantaNum.gte(counter,gen1Cost)){
+  counter = ExpantaNum.sub(counter,gen1Cost);
   gen1+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen2(){
-  if(counter>=gen2Cost){
-  counter-=gen2Cost;
+  if(ExpantaNum.gte(counter,gen2Cost)){
+  counter = ExpantaNum.sub(counter,gen2Cost);
   gen2+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen3(){
-  if(counter>=gen3Cost){
-  counter-=gen3Cost;
+  if(ExpantaNum.gte(counter,gen3Cost)){
+  counter = ExpantaNum.sub(counter,gen3Cost);
   gen3+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen4(){
-  if(counter>=gen4Cost){
-  counter-=gen4Cost;
+  if(ExpantaNum.gte(counter,gen4Cost)){
+  counter = ExpantaNum.sub(counter,gen4Cost);
   gen4+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen5(){
-  if(counter>=gen5Cost){
-  counter-=gen5Cost;
+  if(ExpantaNum.gte(counter,gen5Cost)){
+  counter = ExpantaNum.sub(counter,gen5Cost);
   gen5+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen6(){
-  if(counter>=gen6Cost){
-  counter-=gen6Cost;
+  if(ExpantaNum.gte(counter,gen6Cost)){
+  counter = ExpantaNum.sub(counter,gen6Cost);
   gen6+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen7(){
-  if(counter>=gen7Cost){
-  counter-=gen7Cost;
+  if(ExpantaNum.gte(counter,gen7Cost)){
+  counter = ExpantaNum.sub(counter,gen7Cost);
   gen7+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen8(){
-  if(counter>=gen8Cost){
-  counter-=gen8Cost;
+  if(ExpantaNum.gte(counter,gen8Cost)){
+  counter = ExpantaNum.sub(counter,gen8Cost);
   gen8+=1;
   calculateGain();
   calculateCost();}
 }
 function buyGen9(){
-  if(counter>=gen9Cost){
-  counter-=gen9Cost;
+  if(ExpantaNum.gte(counter,gen9Cost)){
+  counter = ExpantaNum.sub(counter,gen9Cost);
   gen9+=1;
   calculateGain();
   calculateCost();}
@@ -540,120 +551,122 @@ var chc = 1;
 function buyMax(){
   chc = 1;
   while(chc==1){
-  if(counter>=gen9Cost){
+  if(ExpantaNum.gte(counter,gen9Cost)){
   buyGen9();
   }else//{
-  if(counter>=gen8Cost){
+  if(ExpantaNum.gte(counter,gen8Cost)){
   buyGen8();
   }else//{
-  if(counter>=gen7Cost){
+  if(ExpantaNum.gte(counter,gen7Cost)){
   buyGen7();
   }else//{
-  if(counter>=gen6Cost){
+  if(ExpantaNum.gte(counter,gen6Cost)){
   buyGen6();
   }else//{
-  if(counter>=gen5Cost){
+  if(ExpantaNum.gte(counter,gen5Cost)){
   buyGen5();
   }else//{
-  if(counter>=gen4Cost){
+  if(ExpantaNum.gte(counter,gen4Cost)){
   buyGen4();
   }else//{
-  if(counter>=gen3Cost){
+  if(ExpantaNum.gte(counter,gen3Cost)){
   buyGen3();
   }else//{
-  if(counter>=gen2Cost){
+  if(ExpantaNum.gte(counter,gen2Cost)){
   buyGen2();
   }else//{
-  if(counter>=gen1Cost){
+  if(ExpantaNum.gte(counter,gen1Cost)){
   buyGen1();
   }else
   chc=0;//}}}}}}}}
   }
 }
 function calculateGain(){
-  gen9Pd+=willEff1;
-  gen9Tot=(gen9+gen9Pd);
+  gen9Pd=ExpantaNum.add(gen9Pd,willEff1);
+  gen9Tot=ExpantaNum.add(gen9,gen9Pd);
   if(gen9Tot >= 1000000){
     document.getElementById("gen9").innerHTML = gen9Tot.toExponential(2).toString() + " (" + gen9.toString() + ")";} else
   document.getElementById("gen9").innerHTML = Math.trunc(gen9Tot).toString() + " (" + gen9.toString() + ")";
-  gen9Mult=Math.pow((2+vitalityEff1),gen9);
+  gen9Mult=ExpantaNum.pow(ExpantaNum.add(2,vitalityEff1),gen9);
   document.getElementById("gen9Mult").innerHTML = "Country: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
   
-  gen8Pd+=gen9Tot * gen9Mult;
-  gen8Tot=(gen8+gen8Pd);
+  gen8Pd=ExpantaNum.add(gen8Pd,ExpantaNum.mul(gen9Tot , gen9Mult));
+  gen8Tot=ExpantaNum.add(gen8,gen8Pd);
   if(gen8Tot >= 1000000){
     document.getElementById("gen8").innerHTML = gen8Tot.toExponential(2).toString() + " (" + gen8.toString() + ")";} else
   document.getElementById("gen8").innerHTML = Math.trunc(gen8Tot).toString() + " (" + gen8.toString() + ")";
-  gen8Mult=Math.pow((1.9+vitalityEff1),gen8);
+  gen8Mult=ExpantaNum.pow(ExpantaNum.add(1.9,vitalityEff1),gen8);
   document.getElementById("gen8Mult").innerHTML = "State: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
   
-  gen7Pd+=gen8Tot * gen8Mult;
-  gen7Tot=(gen7+gen7Pd);
+  gen7Pd=ExpantaNum.add(gen7Pd,ExpantaNum.mul(gen8Tot , gen8Mult));
+  gen7Tot=ExpantaNum.add(gen7,gen7Pd);
   if(gen7Tot >= 1000000){
     document.getElementById("gen7").innerHTML = gen7Tot.toExponential(2).toString() + " (" + gen7.toString() + ")";} else
   document.getElementById("gen7").innerHTML = Math.trunc(gen7Tot).toString() + " (" + gen7.toString() + ")";
-  gen7Mult=Math.pow((1.8+vitalityEff1),gen7);
+  gen7Mult=ExpantaNum.pow(ExpantaNum.add(1.8,vitalityEff1),gen7);
   document.getElementById("gen7Mult").innerHTML = "Metropolis: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
   
-  gen6Pd+=gen7Tot * gen7Mult;
-  gen6Tot=(gen6+gen6Pd);
+  gen6Pd=ExpantaNum.add(gen6Pd,ExpantaNum.mul(gen7Tot , gen7Mult));
+  gen6Tot=ExpantaNum.add(gen6,gen6Pd);
   if(gen6Tot >= 1000000){
     document.getElementById("gen6").innerHTML = gen6Tot.toExponential(2).toString() + " (" + gen6.toString() + ")";} else
   document.getElementById("gen6").innerHTML = Math.trunc(gen6Tot).toString() + " (" + gen6.toString() + ")";
-  gen6Mult=Math.pow((1.7+vitalityEff1),gen6);
+  gen6Mult=ExpantaNum.pow(ExpantaNum.add(1.7,vitalityEff1),gen6);
   document.getElementById("gen6Mult").innerHTML = "County: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
   
-  gen5Pd+=gen6Tot * gen6Mult;
-  gen5Tot=(gen5+gen5Pd);
+  gen5Pd=ExpantaNum.add(gen5Pd,ExpantaNum.mul(gen6Tot , gen6Mult));
+  gen5Tot=ExpantaNum.add(gen5,gen5Pd);
   if(gen5Tot >= 1000000){
     document.getElementById("gen5").innerHTML = gen5Tot.toExponential(2).toString() + " (" + gen5.toString() + ")";} else
   document.getElementById("gen5").innerHTML = Math.trunc(gen5Tot).toString() + " (" + gen5.toString() + ")";
-  gen5Mult=Math.pow((1.6+vitalityEff1),gen5);
+  gen5Mult=ExpantaNum.pow(ExpantaNum.add(1.6,vitalityEff1),gen5);
   document.getElementById("gen5Mult").innerHTML = "City: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
   
-  gen4Pd+=gen5Tot * gen5Mult;
-  gen4Tot=(gen4+gen4Pd);
+  gen4Pd=ExpantaNum.add(gen4Pd,ExpantaNum.mul(gen5Tot , gen5Mult));
+  gen4Tot=ExpantaNum.add(gen4,gen4Pd);
   if(gen4Tot >= 1000000){
     document.getElementById("gen4").innerHTML = gen4Tot.toExponential(2).toString() + " (" + gen4.toString() + ")";} else
   document.getElementById("gen4").innerHTML = Math.trunc(gen4Tot).toString() + " (" + gen4.toString() + ")";
-  gen4Mult=Math.pow((1.5+vitalityEff1),gen4);
+  gen4Mult=ExpantaNum.pow(ExpantaNum.add(1.5,vitalityEff1),gen4);
   document.getElementById("gen4Mult").innerHTML = "Town: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
   
-  gen3Pd+=gen4Tot * gen4Mult;
-  gen3Tot=(gen3+gen3Pd);
+  gen3Pd=ExpantaNum.add(gen3Pd,ExpantaNum.mul(gen4Tot , gen4Mult));
+  gen3Tot=ExpantaNum.add(gen3,gen3Pd);
   if(gen3Tot >= 1000000){
     document.getElementById("gen3").innerHTML = gen3Tot.toExponential(2).toString() + " (" + gen3.toString() + ")";} else
   document.getElementById("gen3").innerHTML = Math.trunc(gen3Tot).toString() + " (" + gen3.toString() + ")";
-  gen3Mult=Math.pow((1.4+vitalityEff1),gen3);
+  gen3Mult=ExpantaNum.pow(ExpantaNum.add(1.4,vitalityEff1),gen3);
   document.getElementById("gen3Mult").innerHTML = "Village: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
   
-  gen2Pd+=gen3Tot * gen3Mult;
-  gen2Tot=(gen2+gen2Pd);
+  gen2Pd=ExpantaNum.add(gen2Pd,ExpantaNum.mul(gen3Tot , gen3Mult));
+  gen2Tot=ExpantaNum.add(gen2,gen2Pd);
   if(gen2Tot >= 1000000){
-    document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
+  document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
   document.getElementById("gen2").innerHTML = Math.trunc(gen2Tot).toString() + " (" + gen2.toString() + ")";
-  gen2Mult=Math.pow((1.3+vitalityEff1),gen2);
+  gen2Mult=ExpantaNum.pow(ExpantaNum.add(1.3,vitalityEff1),gen2);
   document.getElementById("gen2Mult").innerHTML = "Hamlet: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
   
-  gen1Pd+=gen2Tot * gen2Mult;
-  gen1Tot=(gen1+gen1Pd+dexterityEff1);
+  gen1Pd=ExpantaNum.add(gen1Pd,ExpantaNum.mul(gen2Tot , gen2Mult));
+  gen1Tot=ExpantaNum.add(ExpantaNum.add(gen1,gen1Pd),dexterityEff1);
   if(gen1Tot >= 1000000){
-    document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
+  document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
   document.getElementById("gen1").innerHTML = Math.trunc(gen1Tot).toString() + " (" + gen1.toString() + ")";
-  gen1Mult=Math.pow((1.2+vitalityEff1),(gen1+dexterityEff1));
+  gen1Mult=ExpantaNum.pow(ExpantaNum.add(1.2,vitalityEff1),ExpantaNum.add(gen1,dexterityEff1));
   document.getElementById("gen1Mult").innerHTML = "Peasent: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
-  gain=gen1Tot * gen1Mult * prowessEff1;
+  
+  
+  gain = ExpantaNum.mul(ExpantaNum.mul(gen1Tot , gen1Mult) , prowessEff1);
 }
 function calculateCost(){
-  gen1Cost=10*Math.pow(10,gen1)/charismaEff1;
-  gen2Cost=1000*Math.pow(25,gen2)/charismaEff1;
-  gen3Cost=100000*Math.pow(88,gen3)/charismaEff1;
-  gen4Cost=10000000*Math.pow(234,gen4)/charismaEff1;
-  gen5Cost=1000000000*Math.pow(986,gen5)/charismaEff1;
-  gen6Cost=100000000000*Math.pow(2468,gen6)/charismaEff1;
-  gen7Cost=10000000000000*Math.pow(9567,gen7)/charismaEff1;
-  gen8Cost=1000000000000000*Math.pow(24235,gen8)/charismaEff1;
-  gen9Cost=100000000000000000*Math.pow(96342,gen9)/charismaEff1;
+  gen1Cost=ExpantaNum.div(ExpantaNum.mul(10,ExpantaNum.pow(10,gen1)),charismaEff1);
+  gen2Cost=ExpantaNum.div(ExpantaNum.mul(1000,ExpantaNum.pow(25,gen2)),charismaEff1);
+  gen3Cost=ExpantaNum.div(ExpantaNum.mul(100000,ExpantaNum.pow(88,gen3)),charismaEff1);
+  gen4Cost=ExpantaNum.div(ExpantaNum.mul(10000000,ExpantaNum.pow(234,gen4)),charismaEff1);
+  gen5Cost=ExpantaNum.div(ExpantaNum.mul(1000000000,ExpantaNum.pow(986,gen5)),charismaEff1);
+  gen6Cost=ExpantaNum.div(ExpantaNum.mul(100000000000,ExpantaNum.pow(2468,gen6)),charismaEff1);
+  gen7Cost=ExpantaNum.div(ExpantaNum.mul(10000000000000,ExpantaNum.pow(9567,gen7)),charismaEff1);
+  gen8Cost=ExpantaNum.div(ExpantaNum.mul(1000000000000000,ExpantaNum.pow(24235,gen8)),charismaEff1);
+  gen9Cost=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9)),charismaEff1);
   if(gen1Cost >= 1000000){
     gen1Cost = gen1Cost.toExponential(2);
   }
