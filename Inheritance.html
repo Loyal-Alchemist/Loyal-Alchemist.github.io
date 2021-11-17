@@ -98,7 +98,7 @@ td{
 <tr><td>Golden Chalice</td><td>Holy Sword</td><td>Earthen Shield</td><td>Winged Boots</td><td>Fairy Amulet</td><td>Cursed Grimore</td><td>Draconic Scales<td></tr>
 <tr><td>Midas's Favorite</td><td>Poor Hero</td><td>Spirit Blessed!</td><td>Too Small For You</td><td>Feels Magical</td><td>It's Wispering?</td><td>They Stir Your Greed<td></tr>
 <tr><td><span id="goldChalice"></span></td><td><span id="holySword"></span></td><td><span id="earthShield"></span></td><td><span id="wingBoots"></span></td><td><span id="fairyAmulet"></span></td><td><span id="curseGrimore"></span></td><td><span id="dragonScale"></span></td></tr>
-<tr><td><button style="width:100px;" type="button" class="buyMax" id="buyMax" onclick="buyGoldChalice()">1</button></td><td><button style="width:100px;" type="button" class="buyHolySword" id="buyHolySword" onclick="buyHolySword()">1</button></td><td><button style="width:100px;" type="button" class="buyEarthenShield" id="buyEarthenShield" onclick="buyEarthenShield()">1</button></td><td><button style="width:100px;" type="button" class="buyWingBoots" id="buyWingBoots" onclick="buyWingBoots()">1</button></td><td><button style="width:100px;" type="button" class="buyFairyAmulet" id="buyFairyAmulet" onclick="buyFairyAmulet()">1</button></td><td><button style="width:100px;" type="button" class="buyCursedGrimore" id="buyCursedGrimore" onclick="buyCursedGrimore()">1</button></td><td><button style="width:100px;" type="button" class="buyDragonScales" id="buyDragonScales" onclick="buyDragonScales()">2</button></td></tr>
+<tr><td><button style="width:100px;" type="button" class="buyGoldChalice" id="buyGoldChalice" onclick="buyGoldChalice()">1</button></td><td><button style="width:100px;" type="button" class="buyHolySword" id="buyHolySword" onclick="buyHolySword()">1 Shard</button></td><td><button style="width:100px;" type="button" class="buyEarthenShield" id="buyEarthenShield" onclick="buyEarthenShield()">1 Shard</button></td><td><button style="width:100px;" type="button" class="buyWingBoots" id="buyWingBoots" onclick="buyWingBoots()">1 Shard</button></td><td><button style="width:100px;" type="button" class="buyFairyAmulet" id="buyFairyAmulet" onclick="buyFairyAmulet()">1 Shard</button></td><td><button style="width:100px;" type="button" class="buyCursedGrimore" id="buyCursedGrimore" onclick="buyCursedGrimore()">1 Shard</button></td><td><button style="width:100px;" type="button" class="buyDragonScales" id="buyDragonScales" onclick="buyDragonScales()">2 Shards</button></td></tr>
 </table>
 </div>
 
@@ -280,8 +280,6 @@ localStorage.setItem("sgen9",gen9);
 localStorage.setItem("sgen9Pd",gen9Pd);
 
 localStorage.setItem("sprowessAmt",prowessAmt);
-console.log(prowessAmt);
-console.log(localStorage.getItem("sprowessAmt"));
 
 localStorage.setItem("svitalityAmt",vitalityAmt);
 
@@ -306,119 +304,76 @@ localStorage.setItem("scurseGrimoreAmt",curseGrimoreAmt);
 localStorage.setItem("sdragonScaleAmt",dragonScaleAmt);
 }
 var fix1=0, fix2=0, fix3=0, fix4=0, fix5=0, fix6=0, fix7=0, fix8=0, fix9=0, fix11=0, fix21=0, fix31=0, fix41=0, fix51=0, fix61=0;
+
 function loading(){
-counter=localStorage.getItem("scounter");
-gain=localStorage.getItem("sgain");
+counter=ExpantaNum.fromString(localStorage.getItem("scounter"));
+gain=ExpantaNum.fromString(localStorage.getItem("sgain"));
 
 fix1=localStorage.getItem("sgen1");
-while(fix1>0){
-gen1 += fix1%10;
-fix1 = Math.floor(fix1/10);}
-gen1Pd=localStorage.getItem("sgen1Pd");
+gen1=ExpantaNum.fromString(fix1);
+gen1Pd=ExpantaNum.fromString(localStorage.getItem("sgen1Pd"));
 
 fix2=localStorage.getItem("sgen2");
-while(fix2>0){
-gen2 += fix2%10;
-fix2 = Math.floor(fix2/10);}
-gen2Pd=localStorage.getItem("sgen2Pd");
+gen2=ExpantaNum.fromString(fix2);
+gen2Pd=ExpantaNum.fromString(localStorage.getItem("sgen2Pd"));
 
 fix3=localStorage.getItem("sgen3");
-while(fix3>0){
-gen3 += fix3%10;
-fix3 = Math.floor(fix3/10);}
-gen3Pd=localStorage.getItem("sgen3Pd");
+gen3=ExpantaNum.fromString(fix3);
+gen3Pd=ExpantaNum.fromString(localStorage.getItem("sgen3Pd"));
 
 fix4=localStorage.getItem("sgen4");
-while(fix4>0){
-gen4 += fix4%10;
-fix4 = Math.floor(fix4/10);}
-gen4Pd=localStorage.getItem("sgen4Pd");
+gen4=ExpantaNum.fromString(fix4);
+gen4Pd=ExpantaNum.fromString(localStorage.getItem("sgen4Pd"));
 
 fix5=localStorage.getItem("sgen5");
-while(fix5>0){
-gen5 += fix5%10;
-fix5 = Math.floor(fix5/10);}
-gen5Pd=localStorage.getItem("sgen5Pd");
+gen5=ExpantaNum.fromString(fix5);
+gen5Pd=ExpantaNum.fromString(localStorage.getItem("sgen5Pd"));
 
 fix6=localStorage.getItem("sgen6");
-while(fix6>0){
-gen6 += fix6%10;
-fix6 = Math.floor(fix6/10);}
-gen6Pd=localStorage.getItem("sgen6Pd");
+gen6=ExpantaNum.fromString(fix6);
+gen6Pd=ExpantaNum.fromString(localStorage.getItem("sgen6Pd"));
 
 fix7=localStorage.getItem("sgen7");
-while(fix7>0){
-gen7 += fix7%10;
-fix7 = Math.floor(fix7/10);}
-gen7Pd=localStorage.getItem("sgen7Pd");
+gen7=ExpantaNum.fromString(fix7);
+gen7Pd=ExpantaNum.fromString(localStorage.getItem("sgen7Pd"));
 
 fix8=localStorage.getItem("sgen8");
-while(fix8>0){
-gen8 += fix8%10;
-fix8 = Math.floor(fix8/10);}
-gen8Pd=localStorage.getItem("sgen8Pd");
+gen8=ExpantaNum.fromString(fix8);
+gen8Pd=ExpantaNum.fromString(localStorage.getItem("sgen8Pd"));
 
 fix9=localStorage.getItem("sgen9");
-while(fix9>0){
-gen9 += fix9%10;
-fix9 = Math.floor(fix9/10);}
-gen9Pd=localStorage.getItem("sgen9Pd");
+gen9=ExpantaNum.fromString(fix9);
+gen9Pd=ExpantaNum.fromString(localStorage.getItem("sgen9Pd"));
 
 fix11=localStorage.getItem("sprowessAmt");
-while(fix11>0){
-prowessAmt += fix11%10;
-fix11 = Math.floor(fix11/10);}
-console.log(prowessAmt);
-attChoice = 1;
-calculateAtt();
-prowessAmt-=1;
+prowessAmt=Number(fix11);
+
 fix21=localStorage.getItem("svitalityAmt");
-while(fix21>0){
-vitalityAmt += fix21%10;
-fix21 = Math.floor(fix21/10);}
-attChoice = 2;
-calculateAtt();
-vitalityAmt-=1;
+vitalityAmt=Number(fix21);
+
 fix31=localStorage.getItem("sdexterityAmt");
-while(fix31>0){
-dexterityAmt += fix31%10;
-fix31 = Math.floor(fix31/10);}
-attChoice = 3;
-calculateAtt();
-dexterityAmt-=1;
+dexterityAmt=Number(fix31);
+
 fix41=localStorage.getItem("scharismaAmt");
-while(fix41>0){
-charismaAmt += fix41%10;
-fix41 = Math.floor(fix41/10);}
-attChoice = 4;
-calculateAtt();
-charismaAmt-=1;
+charismaAmt=Number(fix41);
+
 fix51=localStorage.getItem("swillAmt");
-while(fix51>0){
-willAmt += fix51%10;
-fix51 = Math.floor(fix51/10);}
-attChoice = 5;
-calculateAtt();
-willAmt-=1;
+willAmt=Number(fix51);
+
 fix61=localStorage.getItem("sgreedAmt");
-while(fix61>0){
-greedAmt += fix61%10;
-fix61 = Math.floor(fix61/10);}
-attChoice = 6;
-calculateAtt();
-greedAmt-=1;
-attChoice = 0;
-goldChaliceAmt=localStorage.getItem("sgoldChaliceAmt");
+greedAmt=Number(fix61);
 
-earthShieldAmt=localStorage.getItem("searthShieldAmt");
+goldChaliceAmt=Number(localStorage.getItem("sgoldChaliceAmt"));
 
-wingBootsAmt=localStorage.getItem("swingBootsAmt");
+earthShieldAmt=Number(localStorage.getItem("searthShieldAmt"));
 
-fairyAmuletAmt=localStorage.getItem("sfairyAmuletAmt");
+wingBootsAmt=Number(localStorage.getItem("swingBootsAmt"));
 
-curseGrimoreAmt=localStorage.getItem("scurseGrimoreAmt");
+fairyAmuletAmt=Number(localStorage.getItem("sfairyAmuletAmt"));
 
-dragonScaleAmt=localStorage.getItem("sdragonScaleAmt");
+curseGrimoreAmt=Number(localStorage.getItem("scurseGrimoreAmt"));
+
+dragonScaleAmt=Number(localStorage.getItem("sdragonScaleAmt"));
 }
 loading();
 
@@ -487,7 +442,7 @@ function buyDragonScales(){
   calculateArtifact();}
 }
 function start1(){
-counter = 10e30;
+counter = 10e100;
 gain = 0;
 
 gen1 = 0;
@@ -570,35 +525,164 @@ greedEff1 = 1;
 
 attChoice = 0;}
 
+function start0(){
+counter = 10e100;
+gain = 0;
+
+gen1 = 0;
+gen1Pd = 0;
+gen1Tot = 0;
+gen1Mult = 1;
+
+gen2 = 0;
+gen2Pd = 0;
+gen2Tot = 0;
+gen2Mult = 1;
+
+gen3 = 0;
+gen3Pd = 0;
+gen3Tot = 0;
+gen3Mult = 1;
+
+gen4 = 0;
+gen4Pd = 0;
+gen4Tot = 0;
+gen4Mult = 1;
+
+gen5 = 0;
+gen5Pd = 0;
+gen5Tot = 0;
+gen5Mult = 1;
+
+gen6 = 0;
+gen6Pd = 0;
+gen6Tot = 0;
+gen6Mult = 1;
+
+gen7 = 0;
+gen7Pd = 0;
+gen7Tot = 0;
+gen7Mult = 1;
+
+gen8 = 0;
+gen8Pd = 0;
+gen8Tot = 0;
+gen8Mult = 1;
+
+gen9 = 0;
+gen9Pd = 0;
+gen9Tot = 0;
+gen9Mult = 1;
+
+gen1Cost = 10;
+gen2Cost = 1000;
+gen3Cost = 100000;
+gen4Cost = 100000000;
+gen5Cost = 10000000000;
+gen6Cost = 1000000000000;
+gen7Cost = 100000000000000;
+gen8Cost = 10000000000000000;
+gen9Cost = 1000000000000000000;
+
+prowessAmt = 0;
+prowessEff1 = 1;
+prowessEff2 = 1;
+
+vitalityAmt = 0;
+vitalityEff1 = 0;
+vitalityEff2 = 1;
+
+dexterityAmt = 0;
+dexterityEff1 = 0;
+dexterityEff2 = 1;
+
+charismaAmt = 0;
+charismaEff1 = 1;
+charismaEff2 = 1;
+
+willAmt = 0;
+willEff1 = 0;
+willEff2 = 1;
+
+greedAmt = 0;
+greedEff1 = 1;
+
+attChoice = 0;
+
+goldChaliceAmt = 0;
+goldChaliceCost = 1;
+goldChaliceEff1 = 1;
+
+holySwordAmt = 0;
+holySwordCost = 1;
+holySwordEff1 = 1;
+holySwordEff2 = 0;
+
+earthShieldAmt = 0;
+earthShieldCost = 1;
+earthShieldEff1 = 1;
+earthShieldEff2 = 0;
+
+wingBootsAmt = 0;
+wingBootsCost = 1;
+wingBootsEff1 = 1;
+wingBootsEff2 = 0;
+
+fairyAmuletAmt = 0;
+fairyAmuletCost = 1;
+fairyAmuletEff1 = 1;
+fairyAmuletEff2 = 0;
+
+curseGrimoreAmt = 0;
+curseGrimoreCost = 1;
+curseGrimoreEff1 = 1;
+curseGrimoreEff2 = 0;
+
+dragonScaleAmt = 0;
+dragonScaleCost = 2;
+dragonScaleEff1 = 1;
+dragonScaleEff2 = 0;
+
+artifactShard = 0;
+artifactReset = 2;
+}
+
 function calculateArtifact(){
   artifactReset = (ExpantaNum.log(counter)/ExpantaNum.log(1e20))-3;
   document.getElementById("artifactReset").innerHTML = artifactReset;
   document.getElementById("artifactAmt").innerHTML = artifactShard;
   if(goldChaliceAmt<15){
   goldChaliceCost=Math.pow(Math.pow(3,goldChaliceAmt),.5);}
+  document.getElementById("buyGoldChalice").innerHTML = goldChaliceCost.toString() + " Shards";
   goldChaliceEff1=Math.pow(100,goldChaliceAmt);
   document.getElementById("goldChalice").innerHTML = "Multiply Treasure gain by: " + goldChaliceEff1.toString() + "x<br>Next: " + (goldChaliceEff1*100).toString() + "x";
   holySwordCost=Math.pow(3,holySwordAmt);
+  document.getElementById("buyHolySword").innerHTML = holySwordCost.toString() + " Shards";
   holySwordEff1=Math.pow(3,holySwordAmt);
   holySwordEff2=.2*holySwordAmt;
   document.getElementById("holySword").innerHTML = "Multiply Prowess gain by: " + holySwordEff1.toString() + "x, and increase Prowess's First Effect by: " + holySwordEff2.toString() + "<br>Next: " + (holySwordEff1*3).toString() + "x, and +" + (holySwordEff2+.2).toString();
   earthShieldCost=Math.pow(3,earthShieldAmt);
+  document.getElementById("buyEarthenShield").innerHTML = earthShieldCost.toString() + " Shards";
   earthShieldEff1=Math.pow(3,earthShieldAmt);
   earthShieldEff2=0.005*earthShieldAmt;
   document.getElementById("earthShield").innerHTML = "Multiply Vitality gain by: " + earthShieldEff1.toString() + "x, and increase Vitality's First Effect by: " + (earthShieldEff2*10000).toString() + "%<br>Next: " + (earthShieldEff1*3).toString() + "x, and +" + (earthShieldEff2*10000+50).toString() + "%";
   wingBootsCost=Math.pow(3,wingBootsAmt);
+  document.getElementById("buyWingBoots").innerHTML = wingBootsCost.toString() + " Shards";
   wingBootsEff1=Math.pow(3,wingBootsAmt);
-  wingBootsEff2=.1*wingBootsAmt;
-  document.getElementById("wingBoots").innerHTML = "Multiply Dexterity gain by: " + wingBootsEff1.toString() + "x, and increase Dexterity's First Effect by: " + wingBootsEff2.toString() + "<br>Next: " + (wingBootsEff1*3).toString() + "x, and +" + (wingBootsEff2+.1).toString();
+  wingBootsEff2=.05*wingBootsAmt;
+  document.getElementById("wingBoots").innerHTML = "Multiply Dexterity gain by: " + wingBootsEff1.toString() + "x, and increase Dexterity's First Effect by: " + wingBootsEff2.toString() + "<br>Next: " + (wingBootsEff1*3).toString() + "x, and +" + (wingBootsEff2+.05).toString();
   fairyAmuletCost=Math.pow(3,fairyAmuletAmt);
+  document.getElementById("buyFairyAmulet").innerHTML = fairyAmuletCost.toString() + " Shards";
   fairyAmuletEff1=Math.pow(3,fairyAmuletAmt);
   fairyAmuletEff2=0.15*fairyAmuletAmt;
   document.getElementById("fairyAmulet").innerHTML = "Multiply Charisma gain by: " + fairyAmuletEff1.toString() + "x, and increase Charisma's First Effect by: " + fairyAmuletEff2.toString() + "<br>Next: " + (fairyAmuletEff1*3).toString() + "x, and +" + (fairyAmuletEff2+.15).toString();
   curseGrimoreCost=Math.pow(3,curseGrimoreAmt);
+  document.getElementById("buyCursedGrimore").innerHTML = curseGrimoreCost.toString() + " Shards";
   curseGrimoreEff1=Math.pow(3,curseGrimoreAmt);
   curseGrimoreEff2=.1*curseGrimoreAmt;
   document.getElementById("curseGrimore").innerHTML = "Multiply Prowess gain by: " + curseGrimoreEff1.toString() + "x, and increase Prowess's First Effect by: " + curseGrimoreEff2.toString() + "<br>Next: " + (curseGrimoreEff1*3).toString() + "x, and +" + (curseGrimoreEff2+.1).toString();
   dragonScaleCost=1+Math.pow(4,dragonScaleAmt);
+  document.getElementById("buyDragonScales").innerHTML = dragonScaleCost.toString() + " Shards";
   dragonScaleEff1=Math.pow(3,dragonScaleAmt);
   dragonScaleEff2=.2*dragonScaleAmt;
   document.getElementById("dragonScale").innerHTML = "Multiply Greed gain by: " + dragonScaleEff1.toString() + "x, and increase Greed's Effect by: " + dragonScaleEff2.toString() + "<br>Next: " + (dragonScaleEff1*3).toString() + "x, and +" + (dragonScaleEff2+.2).toString();
@@ -623,45 +707,45 @@ function greedChoice(){
 }
 function calculateAtt(){
   if(attChoice==6){
-    greedAmt+=1*dragonScaleEff1;
+    greedAmt+=1*dragonScaleEff1;}
     greedEff1=1+Math.pow(greedAmt,(.5+dragonScaleEff2));
     document.getElementById("greed").innerHTML = (Math.trunc(greedEff1*10)/10).toString();
-  }
+  
   if(attChoice==1){
-    prowessAmt+=willEff2*greedEff1*holySwordEff1;
+    prowessAmt+=willEff2*greedEff1*holySwordEff1;}
     prowessEff1=1+Math.pow(prowessAmt,(.5+holySwordEff2));
     document.getElementById("prowess").innerHTML = (Math.trunc(prowessEff1*10)/10).toString();
     prowessEff2=1+Math.pow(prowessAmt,.2);
     document.getElementById("prowess2").innerHTML = (Math.trunc(prowessEff2*10)/10).toString();
-  }
+  
     if(attChoice==2){
-    vitalityAmt+=prowessEff2*greedEff1*earthShieldEff1;
-    vitalityEff1=(0.01+earthShieldEff2)*Math.log(vitalityAmt);
+    vitalityAmt+=prowessEff2*greedEff1*earthShieldEff1;}
+    vitalityEff1=(0.01+earthShieldEff2)*Math.pow(Math.log(Math.log(vitalityAmt+Math.E)),3);
     document.getElementById("vitality").innerHTML = (Math.trunc(vitalityEff1*100)/100).toString();
     vitalityEff2=1+Math.pow(vitalityAmt,.2);
     document.getElementById("vitality2").innerHTML = (Math.trunc(vitalityEff2*10)/10).toString();
-  }
+  
     if(attChoice==3){
-    dexterityAmt+=vitalityEff2*greedEff1*wingBootsEff1;
+    dexterityAmt+=vitalityEff2*greedEff1*wingBootsEff1;}
     dexterityEff1=Math.pow(dexterityAmt,(.2+wingBootsEff2));
     document.getElementById("dexterity").innerHTML = (Math.trunc(dexterityEff1*10)/10).toString();
     dexterityEff2=1+Math.pow(dexterityAmt,.2);
     document.getElementById("dexterity2").innerHTML = (Math.trunc(dexterityEff2*10)/10).toString();
-  }
+  
     if(attChoice==4){
-    charismaAmt+=dexterityEff2*greedEff1*fairyAmuletEff1;
+    charismaAmt+=dexterityEff2*greedEff1*fairyAmuletEff1;}
     charismaEff1=1+Math.pow(charismaAmt,(.25+fairyAmuletEff2));
     document.getElementById("charisma").innerHTML = (Math.trunc(charismaEff1*10)/10).toString();
     charismaEff2=1+Math.pow(charismaAmt,.2);
     document.getElementById("charisma2").innerHTML = (Math.trunc(charismaEff2*10)/10).toString();
-  }
+  
     if(attChoice==5){
-    willAmt+=charismaEff2*greedEff1*curseGrimoreEff1;
+    willAmt+=charismaEff2*greedEff1*curseGrimoreEff1;}
     willEff1=Math.pow(willAmt,(.1+curseGrimoreEff2));
     document.getElementById("will").innerHTML = (Math.trunc(willEff1*10)/10).toString();
     willEff2=1+Math.pow(willAmt,.2);
     document.getElementById("will2").innerHTML = (Math.trunc(willEff2*10)/10).toString();
-  }
+  
 }
 function buyGen1(){
   if(ExpantaNum.gte(counter,gen1Cost)){
@@ -768,7 +852,7 @@ function calculateGain(){
   document.getElementById("gen9").innerHTML = Math.trunc(gen9Tot).toString() + " (" + gen9.toString() + ")";
   gen9Mult=ExpantaNum.pow(ExpantaNum.add(2,vitalityEff1),gen9);
   if(gen9Mult >= 1000000){
-    document.getElementById("gen9Mult").innerHTML = gen9Mult.toExponential(2).toString() + "x";} else
+    document.getElementById("gen9Mult").innerHTML = "Country: " + gen9Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen9Mult").innerHTML = "Country: " + (Math.trunc(gen9Mult*100)/100).toString() + "x";
   
   gen8Pd=ExpantaNum.add(gen8Pd,ExpantaNum.mul(gen9Tot , gen9Mult));
@@ -777,8 +861,8 @@ function calculateGain(){
     document.getElementById("gen8").innerHTML = gen8Tot.toExponential(2).toString() + " (" + gen8.toString() + ")";} else
   document.getElementById("gen8").innerHTML = Math.trunc(gen8Tot).toString() + " (" + gen8.toString() + ")";
   gen8Mult=ExpantaNum.pow(ExpantaNum.add(1.9,vitalityEff1),gen8);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen8Mult").innerHTML = gen8Mult.toExponential(2).toString() + "x";} else
+  if(gen8Mult >= 1000000){
+    document.getElementById("gen8Mult").innerHTML = "State: " + gen8Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen8Mult").innerHTML = "State: " + (Math.trunc(gen8Mult*100)/100).toString() + "x";
   
   gen7Pd=ExpantaNum.add(gen7Pd,ExpantaNum.mul(gen8Tot , gen8Mult));
@@ -787,8 +871,8 @@ function calculateGain(){
     document.getElementById("gen7").innerHTML = gen7Tot.toExponential(2).toString() + " (" + gen7.toString() + ")";} else
   document.getElementById("gen7").innerHTML = Math.trunc(gen7Tot).toString() + " (" + gen7.toString() + ")";
   gen7Mult=ExpantaNum.pow(ExpantaNum.add(1.8,vitalityEff1),gen7);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen7Mult").innerHTML = gen7Mult.toExponential(2).toString() + "x";} else
+  if(gen7Mult >= 1000000){
+    document.getElementById("gen7Mult").innerHTML = "Metropolis: " + gen7Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen7Mult").innerHTML = "Metropolis: " + (Math.trunc(gen7Mult*100)/100).toString() + "x";
   
   gen6Pd=ExpantaNum.add(gen6Pd,ExpantaNum.mul(gen7Tot , gen7Mult));
@@ -797,8 +881,8 @@ function calculateGain(){
     document.getElementById("gen6").innerHTML = gen6Tot.toExponential(2).toString() + " (" + gen6.toString() + ")";} else
   document.getElementById("gen6").innerHTML = Math.trunc(gen6Tot).toString() + " (" + gen6.toString() + ")";
   gen6Mult=ExpantaNum.pow(ExpantaNum.add(1.7,vitalityEff1),gen6);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen6Mult").innerHTML = gen6Mult.toExponential(2).toString() + "x";} else
+  if(gen6Mult >= 1000000){
+    document.getElementById("gen6Mult").innerHTML = "County: " + gen6Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen6Mult").innerHTML = "County: " + (Math.trunc(gen6Mult*100)/100).toString() + "x";
   
   gen5Pd=ExpantaNum.add(gen5Pd,ExpantaNum.mul(gen6Tot , gen6Mult));
@@ -807,8 +891,8 @@ function calculateGain(){
     document.getElementById("gen5").innerHTML = gen5Tot.toExponential(2).toString() + " (" + gen5.toString() + ")";} else
   document.getElementById("gen5").innerHTML = Math.trunc(gen5Tot).toString() + " (" + gen5.toString() + ")";
   gen5Mult=ExpantaNum.pow(ExpantaNum.add(1.6,vitalityEff1),gen5);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen5Mult").innerHTML = gen5Mult.toExponential(2).toString() + "x";} else
+  if(gen5Mult >= 1000000){
+    document.getElementById("gen5Mult").innerHTML = "City: " + gen5Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen5Mult").innerHTML = "City: " + (Math.trunc(gen5Mult*100)/100).toString() + "x";
   
   gen4Pd=ExpantaNum.add(gen4Pd,ExpantaNum.mul(gen5Tot , gen5Mult));
@@ -817,8 +901,8 @@ function calculateGain(){
     document.getElementById("gen4").innerHTML = gen4Tot.toExponential(2).toString() + " (" + gen4.toString() + ")";} else
   document.getElementById("gen4").innerHTML = Math.trunc(gen4Tot).toString() + " (" + gen4.toString() + ")";
   gen4Mult=ExpantaNum.pow(ExpantaNum.add(1.5,vitalityEff1),gen4);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen4Mult").innerHTML = gen4Mult.toExponential(2).toString() + "x";} else
+  if(gen4Mult >= 1000000){
+    document.getElementById("gen4Mult").innerHTML = "Town: " + gen4Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen4Mult").innerHTML = "Town: " + (Math.trunc(gen4Mult*100)/100).toString() + "x";
   
   gen3Pd=ExpantaNum.add(gen3Pd,ExpantaNum.mul(gen4Tot , gen4Mult));
@@ -827,8 +911,8 @@ function calculateGain(){
     document.getElementById("gen3").innerHTML = gen3Tot.toExponential(2).toString() + " (" + gen3.toString() + ")";} else
   document.getElementById("gen3").innerHTML = Math.trunc(gen3Tot).toString() + " (" + gen3.toString() + ")";
   gen3Mult=ExpantaNum.pow(ExpantaNum.add(1.4,vitalityEff1),gen3);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen3Mult").innerHTML = gen3Mult.toExponential(2).toString() + "x";} else
+  if(gen3Mult >= 1000000){
+    document.getElementById("gen3Mult").innerHTML = "Village: " + gen3Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen3Mult").innerHTML = "Village: " + (Math.trunc(gen3Mult*100)/100).toString() + "x";
   
   gen2Pd=ExpantaNum.add(gen2Pd,ExpantaNum.mul(gen3Tot , gen3Mult));
@@ -837,8 +921,8 @@ function calculateGain(){
   document.getElementById("gen2").innerHTML = gen2Tot.toExponential(2).toString() + " (" + gen2.toString() + ")";} else
   document.getElementById("gen2").innerHTML = Math.trunc(gen2Tot).toString() + " (" + gen2.toString() + ")";
   gen2Mult=ExpantaNum.pow(ExpantaNum.add(1.3,vitalityEff1),gen2);
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen2Mult").innerHTML = gen2Mult.toExponential(2).toString() + "x";} else
+  if(gen2Mult >= 1000000){
+    document.getElementById("gen2Mult").innerHTML = "Hamlet: " + gen2Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen2Mult").innerHTML = "Hamlet: " + (Math.trunc(gen2Mult*100)/100).toString() + "x";
   
   gen1Pd=ExpantaNum.add(gen1Pd,ExpantaNum.mul(gen2Tot , gen2Mult));
@@ -847,8 +931,8 @@ function calculateGain(){
   document.getElementById("gen1").innerHTML = gen1Tot.toExponential(2).toString() + " (" + gen1.toString() + ")";} else
   document.getElementById("gen1").innerHTML = Math.trunc(gen1Tot).toString() + " (" + gen1.toString() + ")";
   gen1Mult=ExpantaNum.pow(ExpantaNum.add(1.2,vitalityEff1),ExpantaNum.add(gen1,dexterityEff1));
-  if(gen9Mult >= 1000000){
-    document.getElementById("gen1Mult").innerHTML = gen1Mult.toExponential(2).toString() + "x";} else
+  if(gen1Mult >= 1000000){
+    document.getElementById("gen1Mult").innerHTML = "Peasent: " + gen1Mult.toExponential(2).toString() + "x";} else
   document.getElementById("gen1Mult").innerHTML = "Peasent: " + (Math.trunc(gen1Mult*100)/100).toString() + "x";
   
   
