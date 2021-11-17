@@ -93,7 +93,7 @@ td{
 
 <div class="tabcontent" id="Artifacts">
 <table class="artifactTable">
-<tr><td></td><td></td><td></td><td><button style="width:100px;" type="button" class="artifactReset" id="artifactReset" onclick="artifactResetMid()">2</button></td></tr>
+<tr><td></td><td></td><td></td><td><button style="width:230px;height:100px;display: block;margin: auto;" type="button" class="artifactReset" id="artifactReset" onclick="artifactResetMid()">2</button></td></tr>
 <tr><td></td><td></td><td></td><td><span id="artifactAmt"></span></td></tr>
 <tr><td>Golden Chalice</td><td>Holy Sword</td><td>Earthen Shield</td><td>Winged Boots</td><td>Fairy Amulet</td><td>Cursed Grimore</td><td>Draconic Scales<td></tr>
 <tr><td>Midas's Favorite</td><td>Poor Hero</td><td>Spirit Blessed!</td><td>Too Small For You</td><td>Feels Magical</td><td>It's Wispering?</td><td>They Stir Your Greed<td></tr>
@@ -103,7 +103,7 @@ td{
 </div>
 
 <div class="tabcontent" id="Settings">
-<button onclick="start1()">Reset All</button>
+<button onclick="start0()">Reset All</button>
 </div>
 <script src="ExpantaNum.js"></script>
 <script>
@@ -310,39 +310,39 @@ counter=ExpantaNum.fromString(localStorage.getItem("scounter"));
 gain=ExpantaNum.fromString(localStorage.getItem("sgain"));
 
 fix1=localStorage.getItem("sgen1");
-gen1=ExpantaNum.fromString(fix1);
+gen1=Number(fix1);
 gen1Pd=ExpantaNum.fromString(localStorage.getItem("sgen1Pd"));
 
 fix2=localStorage.getItem("sgen2");
-gen2=ExpantaNum.fromString(fix2);
+gen2=Number(fix2);
 gen2Pd=ExpantaNum.fromString(localStorage.getItem("sgen2Pd"));
 
 fix3=localStorage.getItem("sgen3");
-gen3=ExpantaNum.fromString(fix3);
+gen3=Number(fix3);
 gen3Pd=ExpantaNum.fromString(localStorage.getItem("sgen3Pd"));
 
 fix4=localStorage.getItem("sgen4");
-gen4=ExpantaNum.fromString(fix4);
+gen4=Number(fix4);
 gen4Pd=ExpantaNum.fromString(localStorage.getItem("sgen4Pd"));
 
 fix5=localStorage.getItem("sgen5");
-gen5=ExpantaNum.fromString(fix5);
+gen5=Number(fix5);
 gen5Pd=ExpantaNum.fromString(localStorage.getItem("sgen5Pd"));
 
 fix6=localStorage.getItem("sgen6");
-gen6=ExpantaNum.fromString(fix6);
+gen6=Number(fix6);
 gen6Pd=ExpantaNum.fromString(localStorage.getItem("sgen6Pd"));
 
 fix7=localStorage.getItem("sgen7");
-gen7=ExpantaNum.fromString(fix7);
+gen7=Number(fix7);
 gen7Pd=ExpantaNum.fromString(localStorage.getItem("sgen7Pd"));
 
 fix8=localStorage.getItem("sgen8");
-gen8=ExpantaNum.fromString(fix8);
+gen8=Number(fix8);
 gen8Pd=ExpantaNum.fromString(localStorage.getItem("sgen8Pd"));
 
 fix9=localStorage.getItem("sgen9");
-gen9=ExpantaNum.fromString(fix9);
+gen9=Number(fix9);
 gen9Pd=ExpantaNum.fromString(localStorage.getItem("sgen9Pd"));
 
 fix11=localStorage.getItem("sprowessAmt");
@@ -375,6 +375,7 @@ curseGrimoreAmt=Number(localStorage.getItem("scurseGrimoreAmt"));
 
 dragonScaleAmt=Number(localStorage.getItem("sdragonScaleAmt"));
 }
+start0();
 loading();
 
 function incrementer(){
@@ -442,7 +443,7 @@ function buyDragonScales(){
   calculateArtifact();}
 }
 function start1(){
-counter = 10e100;
+counter = 10;
 gain = 0;
 
 gen1 = 0;
@@ -526,7 +527,7 @@ greedEff1 = 1;
 attChoice = 0;}
 
 function start0(){
-counter = 10e100;
+counter = 10;
 gain = 0;
 
 gen1 = 0;
@@ -648,19 +649,19 @@ artifactReset = 2;
 }
 
 function calculateArtifact(){
-  artifactReset = (ExpantaNum.log(counter)/ExpantaNum.log(1e20))-3;
-  document.getElementById("artifactReset").innerHTML = artifactReset;
-  document.getElementById("artifactAmt").innerHTML = artifactShard;
+  artifactReset = Math.max(ExpantaNum.log(counter)/ExpantaNum.log(1e20)-3,0);
+  document.getElementById("artifactReset").innerHTML = "Reset all previous progress for: " + Math.trunc(artifactReset).toString(); + " Artifact Shards";
+  document.getElementById("artifactAmt").innerHTML = "You have: " + Math.trunc(artifactShard).toString() + " Artifact Shards";
   if(goldChaliceAmt<15){
-  goldChaliceCost=Math.pow(Math.pow(3,goldChaliceAmt),.5);}
+  goldChaliceCost=Math.pow(Math.pow(3,goldChaliceAmt),.5).toFixed(0);}
   document.getElementById("buyGoldChalice").innerHTML = goldChaliceCost.toString() + " Shards";
-  goldChaliceEff1=Math.pow(100,goldChaliceAmt);
-  document.getElementById("goldChalice").innerHTML = "Multiply Treasure gain by: " + goldChaliceEff1.toString() + "x<br>Next: " + (goldChaliceEff1*100).toString() + "x";
+  goldChaliceEff1=(Math.pow(1000,goldChaliceAmt));
+  document.getElementById("goldChalice").innerHTML = "Multiply Treasure gain by: " + goldChaliceEff1.toString() + "x<br>Next: " + (goldChaliceEff1*1000).toString() + "x";
   holySwordCost=Math.pow(3,holySwordAmt);
   document.getElementById("buyHolySword").innerHTML = holySwordCost.toString() + " Shards";
   holySwordEff1=Math.pow(3,holySwordAmt);
   holySwordEff2=.2*holySwordAmt;
-  document.getElementById("holySword").innerHTML = "Multiply Prowess gain by: " + holySwordEff1.toString() + "x, and increase Prowess's First Effect by: " + holySwordEff2.toString() + "<br>Next: " + (holySwordEff1*3).toString() + "x, and +" + (holySwordEff2+.2).toString();
+  document.getElementById("holySword").innerHTML = "Multiply Prowess gain by: " + holySwordEff1.toString() + "x, and increase Prowess's First Effect by: " + holySwordEff2.toFixed(1).toString() + "<br>Next: " + (holySwordEff1*3).toString() + "x, and +" + (holySwordEff2+.2).toFixed(1).toString();
   earthShieldCost=Math.pow(3,earthShieldAmt);
   document.getElementById("buyEarthenShield").innerHTML = earthShieldCost.toString() + " Shards";
   earthShieldEff1=Math.pow(3,earthShieldAmt);
@@ -670,22 +671,22 @@ function calculateArtifact(){
   document.getElementById("buyWingBoots").innerHTML = wingBootsCost.toString() + " Shards";
   wingBootsEff1=Math.pow(3,wingBootsAmt);
   wingBootsEff2=.05*wingBootsAmt;
-  document.getElementById("wingBoots").innerHTML = "Multiply Dexterity gain by: " + wingBootsEff1.toString() + "x, and increase Dexterity's First Effect by: " + wingBootsEff2.toString() + "<br>Next: " + (wingBootsEff1*3).toString() + "x, and +" + (wingBootsEff2+.05).toString();
+  document.getElementById("wingBoots").innerHTML = "Multiply Dexterity gain by: " + wingBootsEff1.toString() + "x, and increase Dexterity's First Effect by: " + wingBootsEff2.toFixed(2).toString() + "<br>Next: " + (wingBootsEff1*3).toString() + "x, and +" + (wingBootsEff2+.05).toFixed(2).toString();
   fairyAmuletCost=Math.pow(3,fairyAmuletAmt);
   document.getElementById("buyFairyAmulet").innerHTML = fairyAmuletCost.toString() + " Shards";
   fairyAmuletEff1=Math.pow(3,fairyAmuletAmt);
   fairyAmuletEff2=0.15*fairyAmuletAmt;
-  document.getElementById("fairyAmulet").innerHTML = "Multiply Charisma gain by: " + fairyAmuletEff1.toString() + "x, and increase Charisma's First Effect by: " + fairyAmuletEff2.toString() + "<br>Next: " + (fairyAmuletEff1*3).toString() + "x, and +" + (fairyAmuletEff2+.15).toString();
+  document.getElementById("fairyAmulet").innerHTML = "Multiply Charisma gain by: " + fairyAmuletEff1.toString() + "x, and increase Charisma's First Effect by: " + fairyAmuletEff2.toFixed(2).toString() + "<br>Next: " + (fairyAmuletEff1*3).toString() + "x, and +" + (fairyAmuletEff2+.15).toFixed(2).toString();
   curseGrimoreCost=Math.pow(3,curseGrimoreAmt);
   document.getElementById("buyCursedGrimore").innerHTML = curseGrimoreCost.toString() + " Shards";
   curseGrimoreEff1=Math.pow(3,curseGrimoreAmt);
   curseGrimoreEff2=.1*curseGrimoreAmt;
-  document.getElementById("curseGrimore").innerHTML = "Multiply Prowess gain by: " + curseGrimoreEff1.toString() + "x, and increase Prowess's First Effect by: " + curseGrimoreEff2.toString() + "<br>Next: " + (curseGrimoreEff1*3).toString() + "x, and +" + (curseGrimoreEff2+.1).toString();
+  document.getElementById("curseGrimore").innerHTML = "Multiply Prowess gain by: " + curseGrimoreEff1.toString() + "x, and increase Prowess's First Effect by: " + curseGrimoreEff2.toFixed(1).toString() + "<br>Next: " + (curseGrimoreEff1*3).toString() + "x, and +" + (curseGrimoreEff2+.1).toFixed(1).toString();
   dragonScaleCost=1+Math.pow(4,dragonScaleAmt);
   document.getElementById("buyDragonScales").innerHTML = dragonScaleCost.toString() + " Shards";
   dragonScaleEff1=Math.pow(3,dragonScaleAmt);
   dragonScaleEff2=.2*dragonScaleAmt;
-  document.getElementById("dragonScale").innerHTML = "Multiply Greed gain by: " + dragonScaleEff1.toString() + "x, and increase Greed's Effect by: " + dragonScaleEff2.toString() + "<br>Next: " + (dragonScaleEff1*3).toString() + "x, and +" + (dragonScaleEff2+.2).toString();
+  document.getElementById("dragonScale").innerHTML = "Multiply Greed gain by: " + dragonScaleEff1.toString() + "x, and increase Greed's Effect by: " + dragonScaleEff2.toFixed(1).toString() + "<br>Next: " + (dragonScaleEff1*3).toString() + "x, and +" + (dragonScaleEff2+.2).toFixed(1).toString();
 }
 function vitalityChoice(){
   attChoice=2;
@@ -810,38 +811,64 @@ function buyGen9(){
   calculateGain();
   calculateCost();}
 }
-var chc = 1;
+var gen1Floor = 0;
+var gen1Purc = 0;
+var gen2Floor = 0;
+var gen2Purc = 0;
 function buyMax(){
-  chc = 1;
-  while(chc==1){
   if(ExpantaNum.gte(counter,gen9Cost)){
-  buyGen9();
-  }else//{
+  gen9Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000000000000000),96342))-gen9;
+  gen9Purc=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen9Purc);
+  gen9 += gen9Floor;
+  }
   if(ExpantaNum.gte(counter,gen8Cost)){
-  buyGen8();
-  }else//{
+  gen8Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000000000000000),24235))-gen8;
+  gen8Purc=ExpantaNum.div(ExpantaNum.mul(1000000000000000,ExpantaNum.pow(24235,gen8Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen8Purc);
+  gen8 += gen8Floor;
+  }
   if(ExpantaNum.gte(counter,gen7Cost)){
-  buyGen7();
-  }else//{
+  gen7Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10000000000000),9567))-gen7;
+  gen7Purc=ExpantaNum.div(ExpantaNum.mul(10000000000000,ExpantaNum.pow(9567,gen7Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen7Purc);
+  gen7 += gen7Floor;
+  }
   if(ExpantaNum.gte(counter,gen6Cost)){
-  buyGen6();
-  }else//{
+  gen6Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000000000),2468))-gen6;
+  gen6Purc=ExpantaNum.div(ExpantaNum.mul(100000000000,ExpantaNum.pow(2468,gen6Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen6Purc);
+  gen6 += gen6Floor;
+  }
   if(ExpantaNum.gte(counter,gen5Cost)){
-  buyGen5();
-  }else//{
+  gen5Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000000000),986))-gen5;
+  gen5Purc=ExpantaNum.div(ExpantaNum.mul(1000000000,ExpantaNum.pow(986,gen5Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen5Purc);
+  gen5 += gen5Floor;
+  }
   if(ExpantaNum.gte(counter,gen4Cost)){
-  buyGen4();
-  }else//{
+  gen4Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10000000),234))-gen4;
+  gen4Purc=ExpantaNum.div(ExpantaNum.mul(10000000,ExpantaNum.pow(234,gen4Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen4Purc);
+  gen4 += gen4Floor;
+  }
   if(ExpantaNum.gte(counter,gen3Cost)){
-  buyGen3();
-  }else//{
+  gen3Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000),88))-gen3;
+  gen3Purc=ExpantaNum.div(ExpantaNum.mul(100000,ExpantaNum.pow(88,gen3Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen3Purc);
+  gen3 += gen3Floor;
+  }
   if(ExpantaNum.gte(counter,gen2Cost)){
-  buyGen2();
-  }else//{
+  gen2Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000),25))-gen2;
+  gen2Purc=ExpantaNum.div(ExpantaNum.mul(1000,ExpantaNum.pow(25,gen2Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen2Purc);
+  gen2 += gen2Floor;
+  }
   if(ExpantaNum.gte(counter,gen1Cost)){
-  buyGen1();
-  }else
-  chc=0;//}}}}}}}}
+  gen1Floor=Math.floor(ExpantaNum.log10(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10)))-gen1;
+  gen1Purc=ExpantaNum.div(ExpantaNum.mul(10,ExpantaNum.pow(10,gen1Floor)),charismaEff1);
+  counter = ExpantaNum.sub(counter,gen1Purc);
+  gen1 += gen1Floor;
   }
 }
 function calculateGain(){
