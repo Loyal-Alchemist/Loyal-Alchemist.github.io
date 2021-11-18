@@ -53,7 +53,6 @@ td{
 <body>
 <div class="center"><p>You have: <span class="btn" id="btn">10</span> Treasure</p></div>
 <div class="center2"><p>You gain: <span class="btn2" id="btn2">0</span> Treasure per second</p></div>
-<div><p>You gain: <span class="btn3" id="btn3">0</span> Treasure asd</p></div>
 <div class="tab" style="text-align:center;">
   <button style="width:100px; height:50px;" class="tablinks" onclick="openTab(event, 'Collect')">Collect</button>
   <button style="width:100px; height:50px; visibility:hidden;" class="tablinks" onclick="openTab(event, 'Attributes')" id="unlock1">Attributes</button>
@@ -128,7 +127,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-document.getElementById("btn3").innerHTML = ExpantaNum("eee3").toString();
+
 var counter = ExpantaNum(10);
 var gain = ExpantaNum(0);
 
