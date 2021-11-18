@@ -817,56 +817,56 @@ var gen2Floor = 0;
 var gen2Purc = 0;
 function buyMax(){
   if(ExpantaNum.gte(counter,gen9Cost)){
-  gen9Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000000000000000),96342))-gen9;
-  gen9Purc=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9Floor)),charismaEff1);
+  gen9Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*96342),100000000000000000),96342))-gen9;
+  gen9Purc=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9Floor-1+gen9)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen9Purc);
   gen9 += gen9Floor;
   }
   if(ExpantaNum.gte(counter,gen8Cost)){
-  gen8Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000000000000000),24235))-gen8;
-  gen8Purc=ExpantaNum.div(ExpantaNum.mul(1000000000000000,ExpantaNum.pow(24235,gen8Floor)),charismaEff1);
+  gen8Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*24235),1000000000000000),24235))-gen8;
+  gen8Purc=ExpantaNum.div(ExpantaNum.mul(1000000000000000,ExpantaNum.pow(24235,gen8Floor-1+gen8)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen8Purc);
   gen8 += gen8Floor;
   }
   if(ExpantaNum.gte(counter,gen7Cost)){
-  gen7Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10000000000000),9567))-gen7;
-  gen7Purc=ExpantaNum.div(ExpantaNum.mul(10000000000000,ExpantaNum.pow(9567,gen7Floor)),charismaEff1);
+  gen7Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*9567),10000000000000),9567))-gen7;
+  gen7Purc=ExpantaNum.div(ExpantaNum.mul(10000000000000,ExpantaNum.pow(9567,gen7Floor-1+gen7)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen7Purc);
   gen7 += gen7Floor;
   }
   if(ExpantaNum.gte(counter,gen6Cost)){
-  gen6Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000000000),2468))-gen6;
-  gen6Purc=ExpantaNum.div(ExpantaNum.mul(100000000000,ExpantaNum.pow(2468,gen6Floor)),charismaEff1);
+  gen6Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*2468),100000000000),2468))-gen6;
+  gen6Purc=ExpantaNum.div(ExpantaNum.mul(100000000000,ExpantaNum.pow(2468,gen6Floor-1+gen6)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen6Purc);
   gen6 += gen6Floor;
   }
   if(ExpantaNum.gte(counter,gen5Cost)){
-  gen5Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000000000),986))-gen5;
-  gen5Purc=ExpantaNum.div(ExpantaNum.mul(1000000000,ExpantaNum.pow(986,gen5Floor)),charismaEff1);
+  gen5Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*986),1000000000),986))-gen5;
+  gen5Purc=ExpantaNum.div(ExpantaNum.mul(1000000000,ExpantaNum.pow(986,gen5Floor-1+gen5)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen5Purc);
   gen5 += gen5Floor;
   }
   if(ExpantaNum.gte(counter,gen4Cost)){
-  gen4Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10000000),234))-gen4;
-  gen4Purc=ExpantaNum.div(ExpantaNum.mul(10000000,ExpantaNum.pow(234,gen4Floor)),charismaEff1);
+  gen4Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*234),10000000),234))-gen4;
+  gen4Purc=ExpantaNum.div(ExpantaNum.mul(10000000,ExpantaNum.pow(234,gen4Floor-1+gen4)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen4Purc);
   gen4 += gen4Floor;
   }
   if(ExpantaNum.gte(counter,gen3Cost)){
-  gen3Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),100000),88))-gen3;
-  gen3Purc=ExpantaNum.div(ExpantaNum.mul(100000,ExpantaNum.pow(88,gen3Floor)),charismaEff1);
+  gen3Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1*88),100000),88))-gen3;
+  gen3Purc=ExpantaNum.div(ExpantaNum.mul(100000,ExpantaNum.pow(88,gen3Floor-1+gen3)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen3Purc);
   gen3 += gen3Floor;
   }
   if(ExpantaNum.gte(counter,gen2Cost)){
-  gen2Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),1000),25))-gen2;
-  gen2Purc=ExpantaNum.div(ExpantaNum.mul(1000,ExpantaNum.pow(25,gen2Floor)),charismaEff1);
+  gen2Floor=Math.floor(ExpantaNum.logBase(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),40),25))-gen2;
+  gen2Purc=ExpantaNum.div(ExpantaNum.mul(1000,ExpantaNum.pow(25,gen2Floor-1+gen2)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen2Purc);
   gen2 += gen2Floor;
   }
   if(ExpantaNum.gte(counter,gen1Cost)){
-  gen1Floor=Math.floor(ExpantaNum.log10(ExpantaNum.div(ExpantaNum.mul(counter,charismaEff1),10)))-gen1;
-  gen1Purc=ExpantaNum.div(ExpantaNum.mul(10,ExpantaNum.pow(10,gen1Floor)),charismaEff1);
+  gen1Floor=Math.floor(ExpantaNum.log10((ExpantaNum.mul(counter,charismaEff1))))-gen1;
+  gen1Purc=ExpantaNum.div(ExpantaNum.mul(10,ExpantaNum.pow(10,gen1Floor-1+gen1)),charismaEff1);
   counter = ExpantaNum.sub(counter,gen1Purc);
   gen1 += gen1Floor;
   }
