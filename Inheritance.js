@@ -305,9 +305,16 @@ function incrementer(){
   document.getElementById("btn2").innerHTML = Math.trunc(gain*10).toString();}
   if((ExpantaNum.gte(counter,1e30)) && (document.getElementById("unlock1").style.visibility = "hidden")){
   document.getElementById("unlock1").style.visibility = "visible";}
+  else{
+  document.getElementById("unlock1").style.visibility = "hidden";
+  }
   if((ExpantaNum.gte(counter,1e100)) && (document.getElementById("unlock2").style.visibility = "hidden")){
   document.getElementById("unlock2").style.visibility = "visible";
   document.getElementById("unlock2a").style.visibility = "visible";}
+  /*else {
+  document.getElementById("unlock2").style.visibility = "hidden";
+  document.getElementById("unlock2a").style.visibility = "hidden";
+  }*/
 }
 setInterval(incrementer, 100);
 openTab(event, 'Collect');
@@ -914,31 +921,31 @@ function calculateCost(){
   gen9Cost=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9)),charismaEff1);
   //console.log(gen9Cost);
   if(ExpantaNum.gte(gen1Cost,1000000)){
-    gen1Cost = gen1Cost.toFixed(1);
+    gen1Cost = gen1Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen2Cost,1000000)){
-    gen2Cost = gen2Cost.toFixed(1);
+    gen2Cost = gen2Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen3Cost,1000000)){
-    gen3Cost = gen3Cost.toFixed(1);
+    gen3Cost = gen3Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen4Cost,1000000)){
-    gen4Cost = gen4Cost.toFixed(1);
+    gen4Cost = gen4Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen5Cost,1000000)){
-    gen5Cost = gen5Cost.toFixed(1);
+    gen5Cost = gen5Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen6Cost,1000000)){
-    gen6Cost = gen6Cost.toFixed(1);
+    gen6Cost = gen6Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen7Cost,1000000)){
-    gen7Cost = gen7Cost.toFixed(1);
+    gen7Cost = gen7Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen8Cost,1000000)){
-    gen8Cost = gen8Cost.toFixed(1);
+    gen8Cost = gen8Cost.toFixed(2);
   }
   if(ExpantaNum.gte(gen9Cost,1000000)){
-    gen9Cost = gen9Cost.toFixed(1);
+    gen9Cost = gen9Cost.toFixed(2);
   }
   //console.log(gen9Cost);
   document.getElementById("gen1Cost").innerHTML = gen1Cost.toString(); 
@@ -957,8 +964,9 @@ function artifactResetMid(){
   hmm();
 }
 function hmm(){
+  if(artifactReset>=2){
   artifactShard+=artifactReset;
-  start1();
+  start1();}
 }
 //}
 //{Relic Milestones
