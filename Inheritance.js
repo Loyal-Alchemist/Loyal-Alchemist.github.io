@@ -445,7 +445,7 @@ attChoice = 0;}
 //}
 //{Total Reset
 function start0(){
-counter = 10;
+counter = 10e100;
 gain = 0;
 
 gen1 = 0;
@@ -562,7 +562,7 @@ dragonScaleCost = 2;
 dragonScaleEff1 = 1;
 dragonScaleEff2 = 0;
 
-artifactShard = 0;
+artifactShard = 1e80;
 artifactReset = 2;
 artifactResetAmt = 0;
 }
@@ -914,31 +914,31 @@ function calculateCost(){
   gen9Cost=ExpantaNum.div(ExpantaNum.mul(100000000000000000,ExpantaNum.pow(96342,gen9)),charismaEff1);
   //console.log(gen9Cost);
   if(ExpantaNum.gte(gen1Cost,1000000)){
-    gen1Cost = gen1Cost.toExponential(1);
+    gen1Cost = gen1Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen2Cost,1000000)){
-    gen2Cost = gen2Cost.toExponential(1);
+    gen2Cost = gen2Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen3Cost,1000000)){
-    gen3Cost = gen3Cost.toExponential(1);
+    gen3Cost = gen3Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen4Cost,1000000)){
-    gen4Cost = gen4Cost.toExponential(1);
+    gen4Cost = gen4Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen5Cost,1000000)){
-    gen5Cost = gen5Cost.toExponential(1);
+    gen5Cost = gen5Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen6Cost,1000000)){
-    gen6Cost = gen6Cost.toExponential(1);
+    gen6Cost = gen6Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen7Cost,1000000)){
-    gen7Cost = gen7Cost.toExponential(1);
+    gen7Cost = gen7Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen8Cost,1000000)){
-    gen8Cost = gen8Cost.toExponential(1);
+    gen8Cost = gen8Cost.toFixed(1);
   }
   if(ExpantaNum.gte(gen9Cost,1000000)){
-    gen9Cost = gen9Cost.toExponential(1);
+    gen9Cost = gen9Cost.toFixed(1);
   }
   //console.log(gen9Cost);
   document.getElementById("gen1Cost").innerHTML = gen1Cost.toString(); 
