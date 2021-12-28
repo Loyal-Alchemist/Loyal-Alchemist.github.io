@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+</style>
+</head>
+<body>
+<span id="positionC"></span>
+<table id="mapSpace" style="height:100%;width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; border-collapse: collapse;table-layout: fixed;">
+<tr>
+  <td id = "-5,3">hey</td><td id = "-4,3"></td><td id = "-3,3"></td><td id = "-2,3"></td><td id = "-1,3"></></td><td id = "0,3"></td><td id = "1,3"></td><td id = "2,3"></td><td id = "3,3"></td><td id = "4,3"></td><td id = "5,3">hey</td>
+</tr>
+<tr>
+  <td id = "-5,2">hey</td><td id = "-4,2"></td><td id = "-3,2"></td><td id = "-2,2"></td><td id = "-1,2"></></td><td id = "0,2"></td><td id = "1,2"></td><td id = "2,2"></td><td id = "3,2"></td><td id = "4,2"></td><td id = "5,2">hey</td>
+</tr>
+<tr>
+  <td id = "-5,1">hey</td><td id = "-4,1"></td><td id = "-3,1"></td><td id = "-2,1"></td><td id = "-1,1"></></td><td id = "0,1"></td><td id = "1,1"></td><td id = "2,1"></td><td id = "3,1"></td><td id = "4,1"></td><td id = "5,1">hey</td>
+</tr>
+<tr>
+  <td id = "-5,0">hey</td><td id = "-4,0"></td><td id = "-3,0"></td><td id = "-2,0"></td><td id = "-1,0"></td><td id = "0,0"></td><td id = "1,0"></td><td id = "2,0"></td><td id = "3,0"></td><td id = "4,0"></td><td id = "5,0">hey</td>
+</tr>
+<tr>
+  <td id = "-5,-1">hey</td><td id = "-4,-1"></td><td id = "-3,-1"></td><td id = "-2,-1"></td><td id = "-1,-1"></></td><td id = "0,-1"></td><td id = "1,-1"></td><td id = "2,-1"></td><td id = "3,-1"></td><td id = "4,-1"></td><td id = "5,-1">hey</td>
+</tr>
+<tr>
+  <td id = "-5,-2">hey</td><td id = "-4,-2"></td><td id = "-3,-2"></td><td id = "-2,-2"></td><td id = "-1,-2"></></td><td id = "0,-2"></td><td id = "1,-2"></td><td id = "2,-2"></td><td id = "3,-2"></td><td id = "4,-2"></td><td id = "5,-2">hey</td>
+</tr>
+<tr>
+  <td id = "-5,-3">hey</td><td id = "-4,-3"></td><td id = "-3,-3"></td><td id = "-2,-3"></td><td id = "-1,-3"></></td><td id = "0,-3"></td><td id = "1,-3"></td><td id = "2,-3"></td><td id = "3,-3"></td><td id = "4,-3"></td><td id = "5,-3">hey</td>
+</tr>
+</table>
+<script>
+var positionX = 0;
+var positionY = 0;
+var i = 0;
+var obstacleUp = false;
+var obstacleDown = false;
+var obstacleLeft = false;
+var obstacleRight = false;
+var mapObstacle = [["Pokeball",0,2,"PickUp.png"],["Wall",5,5,"wall.png"],["Wall",5,4,"wall.png"],["Wall",5,3,"wall.png"],["Wall",5,2,"wall.png"],["Wall",5,1,"wall.png"],["Wall",5,0,"wall.png"],["Wall",5,-1,"wall.png"],["Wall",4,-1,"wall.png"],["Wall",3,-1,"wall.png"],["Wall",2,-1,"wall.png"],["Wall",1,-1,"wall.png"],["Wall",0,-1,"wall.png"],["Wall",-1,-1,"wall.png"],["Wall",-2,-1,"wall.png"],["Wall",-3,-1,"wall.png"],["Wall",-4,-1,"wall.png"],["Wall",-5,-1,"wall.png"],["Wall",-5,0,"wall.png"],["Wall",-5,1,"wall.png"],["Wall",-5,2,"wall.png"],["Wall",-5,3,"wall.png"],["Wall",-5,4,"wall.png"],["Wall",-5,5,"wall.png"],["Wall",-4,5,"wall.png"],["Wall",-3,5,"wall.png"],["Wall",-2,5,"wall.png"],["Wall",-1,5,"wall.png"],["Wall",0,5,"wall.png"],["Wall",1,5,"wall.png"],["Wall",2,5,"wall.png"],["Wall",3,5,"wall.png"],["Wall",4,5,"wall.png"]];
+document.onkeypress = function() {changePosition()};
+var direction = down;
+var inventory = []
+function changePosition(){
+  i = 0;
+  obstacleUp = false;
+  obstacleDown = false;
+  obstacleLeft = false;
+  obstacleRight = false;
+  while(i < mapObstacle.length){
+  if (mapObstacle[i][1] == positionX-1 && mapObstacle[i][2] == positionY){
+    obstacleLeft = true;}
+  if (mapObstacle[i][1] == positionX+1 && mapObstacle[i][2] == positionY){
+    obstacleRight = true;}
+  if (mapObstacle[i][2] == positionY-1 && mapObstacle[i][1] == positionX){
+    obstacleDown = true;}
+  if (mapObstacle[i][2] == positionY+1 && mapObstacle[i][1] == positionX){
+    obstacleUp = true;}
+  i += 1;}
+  if (event.keyCode)
+  if (event.keyCode == 119){
+    if(obstacleUp == false) {positionY += 1;} direction=up;}
+  if (event.keyCode == 115){
+    if(obstacleDown == false) {positionY -= 1;} direction=down;}
+  if (event.keyCode == 97){
+    if(obstacleLeft == false) {positionX -= 1;} direction=left;}
+  if (event.keyCode == 100){
+    if(obstacleRight == false) {positionX += 1;}direction=right;}
+  //document.getElementById("positionC").innerHTML = "Y Position: " + positionY + " X Position: " + positionX;
+  updateMap();
+}
+function updateMap(){
+  document.getElementById("0,0").innerHTML = "<img src='images/pokemon-trainer-icon-7.jpg' width=\"64\" height=\"64\">";
+  i=0;
+  document.getElementById("0,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("0,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,1,img\">";document.getElementById("0,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("0,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("0,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,2,img\">";document.getElementById("0,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("0,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("0,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,3,img\">";document.getElementById("0,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("0,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("0,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,-1,img\">";document.getElementById("0,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("0,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("0,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,-2,img\">";document.getElementById("0,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("0,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==0 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("0,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"0,-3,img\">";document.getElementById("0,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("-5,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,0,img\">";document.getElementById("-5,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("-5,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,1,img\">";document.getElementById("-5,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("-5,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,2,img\">";document.getElementById("-5,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("-5,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,3,img\">";document.getElementById("-5,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("-5,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,-1,img\">";document.getElementById("-5,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("-5,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,-2,img\">";document.getElementById("-5,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-5,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-5 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("-5,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-5,-3,img\">";document.getElementById("-5,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("-4,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,0,img\">";document.getElementById("-4,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("-4,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,1,img\">";document.getElementById("-4,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("-4,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,2,img\">";document.getElementById("-4,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("-4,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,3,img\">";document.getElementById("-4,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("-4,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,-1,img\">";document.getElementById("-4,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("-4,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,-2,img\">";document.getElementById("-4,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-4,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-4 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("-4,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-4,-3,img\">";document.getElementById("-4,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("-3,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,0,img\">";document.getElementById("-3,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("-3,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,1,img\">";document.getElementById("-3,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("-3,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,2,img\">";document.getElementById("-3,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("-3,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,3,img\">";document.getElementById("-3,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==- 1) {  document.getElementById("-3,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,-1,img\">";document.getElementById("-3,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("-3,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,-2,img\">";document.getElementById("-3,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-3,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-3 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("-3,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-3,-3,img\">";document.getElementById("-3,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("-2,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,0,img\">";document.getElementById("-2,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("-2,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,1,img\">";document.getElementById("-2,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("-2,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,2,img\">";document.getElementById("-2,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("-2,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,3,img\">";document.getElementById("-2,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("-2,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,-1,img\">";document.getElementById("-2,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("-2,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,-2,img\">";document.getElementById("-2,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-2,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-2 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("-2,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-2,-3,img\">";document.getElementById("-2,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("-1,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,0,img\">";document.getElementById("-1,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("-1,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,1,img\">";document.getElementById("-1,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("-1,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,2,img\">";document.getElementById("-1,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("-1,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,3,img\">";document.getElementById("-1,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("-1,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,-1,img\">";document.getElementById("-1,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("-1,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,-2,img\">";document.getElementById("-1,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("-1,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==-1 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("-1,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"-1,-3,img\">";document.getElementById("-1,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("1,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,0,img\">";document.getElementById("1,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("1,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,1,img\">";document.getElementById("1,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("1,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,2,img\">";document.getElementById("1,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("1,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,3,img\">";document.getElementById("1,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("1,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,-1,img\">";document.getElementById("1,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("1,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,-2,img\">";document.getElementById("1,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("1,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==1 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("1,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"1,-3,img\">";document.getElementById("1,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("2,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,0,img\">";document.getElementById("2,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("2,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,1,img\">";document.getElementById("2,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("2,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,2,img\">";document.getElementById("2,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("2,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,3,img\">";document.getElementById("2,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("2,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,-1,img\">";document.getElementById("2,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("2,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,-2,img\">";document.getElementById("2,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("2,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==2 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("2,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"2,-3,img\">";document.getElementById("2,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("3,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,0,img\">";document.getElementById("3,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("3,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,1,img\">";document.getElementById("3,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("3,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,2,img\">";document.getElementById("3,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("3,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,3,img\">";document.getElementById("3,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("3,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,-1,img\">";document.getElementById("3,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("3,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,-2,img\">";document.getElementById("3,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("3,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==3 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("3,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"3,-3,img\">";document.getElementById("3,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("4,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,0,img\">";document.getElementById("4,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("4,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,1,img\">";document.getElementById("4,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("4,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,2,img\">";document.getElementById("4,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("4,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,3,img\">";document.getElementById("4,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("4,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,-1,img\">";document.getElementById("4,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("4,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,-2,img\">";document.getElementById("4,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("4,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==4 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("4,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"4,-3,img\">";document.getElementById("4,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==0) {  document.getElementById("5,0").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,0,img\">";document.getElementById("5,0,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==1) {  document.getElementById("5,1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,1,img\">";document.getElementById("5,1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==2) {  document.getElementById("5,2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,2,img\">";document.getElementById("5,2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==3) {  document.getElementById("5,3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,3,img\">";document.getElementById("5,3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==-1) {  document.getElementById("5,-1").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,-1,img\">";document.getElementById("5,-1,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==-2) {  document.getElementById("5,-2").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,-2,img\">";document.getElementById("5,-2,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+  document.getElementById("5,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\">";
+  while(i<mapObstacle.length){if ((mapObstacle[i][1]-positionX)==5 && (mapObstacle[i][2]-positionY)==-3) {  document.getElementById("5,-3").innerHTML = "<img src='images/blank.png' width=\"64\" height=\"64\" id = \"5,-3,img\">";document.getElementById("5,-3,img").setAttribute("src","images/" + mapObstacle[i][3])}i+=1}
+  i=0
+
+  
+}
+updateMap()
+</script>
+</body>
+</html>
