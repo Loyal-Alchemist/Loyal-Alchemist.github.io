@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.card{
+background-color: lightblue;
+user-select: none;
+display: block;
+width: 190px;
+height: 150px;
+z-index: 1;
+border: 5px solid blue;
+border-radius: 13.16%/16.66%;
+text-align: center;
+}
+.deck{
+background-color: lightblue;
+user-select: none;
+display: inline-block;
+width: 190px;
+height: 150px;
+z-index: 4;
+border: 5px solid blue;
+border-radius: 13.16%/16.66%;
+text-align: center;
+margin: 7.5px;
+overflow:auto;
+}
+.popupB::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.cardS{
+background-color: lightgrey;
+user-select: none;
+display: block;
+width: 200px;
+height: 150px;
+z-index: 0;
+border-radius: 25px;
+text-align: center;
+}
+.endTurnB{
+background-color: lightblue;
+user-select: none;
+display: block;
+width: 100px;
+height: 75px;
+z-index: 0;
+border-radius: 25px;
+border: 5px solid blue;
+text-align: center;
+line-height: 75px:
+}
+body
+{
+    position: fixed; 
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #282828;
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+</head>
+<body>
+<span id="card1" onmousedown="mouseDown1();" class="card" style="position:absolute; bottom: 65px; right: 1200px;">Card 1</span>
+<span id="card2" onmousedown="mouseDown2();" class="card" style="position:absolute; bottom: 65px; right: 950px;">Card 2</span>
+<span id="card3" onmousedown="mouseDown3();" class="card" style="position:absolute; bottom: 65px; right: 700px;">Card 3</span>
+<span id="card4" onmousedown="mouseDown4();" class="card" style="position:absolute; bottom: 65px; right: 450px;">Card 4</span>
+<span id="card5" onmousedown="mouseDown5();" class="card" style="position:absolute; bottom: 65px; right: 200px;">Card 5</span>
+<span id="cardS1" class="cardS" style="position:absolute; bottom: 70px; right: 1200px;"></span>
+<span id="cardS2" class="cardS" style="position:absolute; bottom: 70px; right: 950px;"></span>
+<span id="cardS3" class="cardS" style="position:absolute; bottom: 70px; right: 700px;"></span>
+<span id="cardS4" class="cardS" style="position:absolute; bottom: 70px; right: 450px;"></span>
+<span id="cardS5" class="cardS" style="position:absolute; bottom: 70px; right: 200px;"></span>
+<button id="endTurn" class="endTurnB" style="position:absolute; bottom: 220px; right: 80px;" onclick="endTurn();">End Turn</button>
+<span id="enemyIntent" style="position:absolute; bottom: 432px; right: 768px;"></span>
+<span id="HPE" style="color: red; font-weight:Bold;">5</span>
+<span id="topBar" class="topBarB" style="position: absolute; width: 100%; height: 10%; background-color: lightblue; z-index:-1; border-bottom: 5px solid blue;"></span>
+<div id="popup" class="popupB" Style="position: absolute; width: 70%; height: 70%; background-color: lightblue; z-index:2; border: 5px solid blue; bottom: 15%; right: 15%; visibility: hidden; overflow: auto;"></div>
+<span id="rcard1" class="card" onclick="setReward1()" style="position:absolute; bottom: 22%; right: 67.4975%; z-index: 3; visibility: hidden;">Card 1</span>
+<span id="rcard2" class="card" onclick="setReward2()" style="position:absolute; bottom: 22%; right: 44.1675%; z-index: 3; visibility: hidden">Card 2</span>
+<span id="rcard3" class="card" onclick="setReward3()" style="position:absolute; bottom: 22%; right: 20.8335%; z-index: 3; visibility: hidden">Card 3</span>
+<button id="skip" onclick="skipPopup()" style="position:absolute; bottom: 18%; right: 50%; z-index: 3; visibility: hidden">skip</button>
+<button id="close" onclick="closePopupF()" style="position:absolute; bottom: 82.5%; z-index: 3; visibility: hidden; border: 5px solid red; background-color: pink; border-radius: 100%;"></button>
+<span id="rcard1" style="position:absolute; height:2%; width: 1.57894736842%; bottom: 91%; right: 10%; z-index: 2; background-color: lightblue; border: 5px solid blue; border-radius: 13.16%/16.66%;"></span>
+<span id="rcard2" style="position:absolute; height:2%; width: 1.57894736842%; bottom: 93%; right: 9%; z-index: 1; background-color: lightblue; border: 5px solid blue; border-radius: 13.16%/16.66%;"></span>
+<span id="rcard3" style="position:absolute; height:2%; width: 1.57894736842%; bottom: 95%; right: 8%; z-index: 0; background-color: lightblue; border: 5px solid blue; border-radius: 13.16%/16.66%;"></span>
+<span id="deckNumber" style="position:absolute; height:2%; width: 1.57894736842%; bottom: 91%; right: 7%; z-index: 3;"></span>
+<span id="deckClickable" style="position:absolute; height:10%; width:6.2%; bottom:89%; right:6.8%; z-index:4;" onclick="showDeck();"></span>
+<script src="Drag.js">
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {padding:0; margin:0;}
+.message{
+background-color: lightgrey;
+user-select: none;
+display: block;
+width: 200px;
+height: 150px;
+z-index: 0;
+border-radius: 5%/10%;
+}
+</style>
+</head>
+<body>
+<span id="d"></span>
+<script>
+var time;
+var timeRemaining;
+var today = new Date();
+function setTime(){
+var today = new Date();
+time=(today.getMinutes()*60)+today.getSeconds()+today.getMilliseconds()/1000;
+timeRemaining = time/3000;
+document.getElementById("d").innerHTML = (timeRemaining*100).toFixed(2) + "%";
+}
+setInterval(setTime,10);
+</script>
+</body>
+</html>
