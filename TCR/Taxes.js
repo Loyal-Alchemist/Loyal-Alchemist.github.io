@@ -28,7 +28,7 @@ function actCorrupt(){
 	corruption += .1;
 }
 function actBuyHouseAttempt(){
-	if(curr1 >= houseCost) {
+	if(curr1 >= houseCost){
 		curr1 -= houseCost;
 		house += 1;
 		corruption = 0;
