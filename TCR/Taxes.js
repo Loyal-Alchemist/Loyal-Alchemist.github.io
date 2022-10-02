@@ -26,7 +26,7 @@ function calcCost(){
 	houseCost = Math.pow(10,(house-corruption+1));
 }
 //}
-//{Button Press
+//{Button Modifier
 function actCorrupt(){
 	corruption += .1;
 }
